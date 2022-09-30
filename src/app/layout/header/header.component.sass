@@ -1,0 +1,242 @@
+#header
+  max-width: 1360px
+  margin-left: auto
+  margin-right: auto
+  padding: 20px
+  color: white
+  font-family: "Bebas Neue"
+  display: flex
+  flex-wrap: nowrap
+  justify-content: space-between
+  align-items: center
+  font-size: 16px
+
+  .left
+    float: left
+
+  .right
+    float: right
+    text-align: right
+
+    #phone-number
+      font-size: 28px
+
+    #menu
+      ul
+        display: flex
+        flex-wrap: nowrap
+
+        li
+          list-style-type: none
+          padding-left: 30px
+          font-family: "Poppins"
+          font-weight: 500
+
+          a
+            text-decoration: none
+            color: white
+            letter-spacing: 5%
+
+    #search
+      color: #13234E
+      background: white
+      border: 1px solid #13234E
+      border-radius: 15px
+      display: flex
+      flex-wrap: nowrap
+      justify-content: center
+      width: fit-content
+      padding-left: 15px
+      float: right
+
+      input
+        color: #13234E
+        border: none
+        background: none
+
+      input:focus
+        outline: none
+
+      button
+        border: none
+        background: none
+
+      ::placeholder
+        color: #13234E
+
+#mega-menu
+  position: absolute
+  width: 100%
+  background: linear-gradient(90deg, #040e28, #071c54)
+  color: white
+  font-family: "Poppins"
+  font-weight: 200
+  box-shadow: 0px 31px 20px 4px #0000003b
+
+  .heading
+    font: 22px bold "Poppins"
+    text-align: center
+
+    &:after
+      content: ""
+      display: block
+      width: 50px
+      height: 3px
+      margin-right: auto
+      margin-left: auto
+      background: white
+
+  .mega-menu-info
+    display: flex
+    flex-wrap: nowrap
+    padding: 20px
+    max-width: 1360px
+    margin-left: auto
+    margin-right: auto
+
+
+    .item
+      display: flex
+      justify-content: space-between
+      margin-left: 20px
+      padding: 7px
+      padding-left: 15px
+      font-size: smaller
+      font-weight: lighter
+
+      &:hover
+        background-color: #13234ee7
+        border-radius: 7.5px
+        font-size: medium
+        font-weight: 500
+
+      a
+        text-decoration: none
+        color: white
+
+
+    .arrow
+      opacity: 0.1
+
+#mobile-menu > div
+  background: linear-gradient(45deg, #040e28, #071c54)
+#mobile-menu
+  display: none
+  color: white
+
+  margin: 0
+  left: 0
+  text-align: center
+
+  .title
+    font-family: "Montserrat"
+    font-size: 12px
+
+  .top, .bottom
+    display: flex
+    flex-wrap: nowrap
+    justify-content: space-evenly
+    align-items: center
+    height: fit-content
+    padding: 10px
+    width: 100%
+
+  .top
+    top: 0
+
+  .bottom
+    bottom: 0
+    position: fixed
+
+  .burger
+    .burger-menu::before
+        content: ''
+        display: block
+        width: 25px
+        height: 2px
+        box-shadow: 0px -13px 0 0 white
+
+    .burger-menu
+        height: 2px
+        width: 25px
+        margin: auto
+        box-shadow: 0px -7px 0 0 white
+
+    .burger-menu::after
+        content: ''
+        display: block
+        width: 25px
+        height: 2px
+        box-shadow: 0px -3px 0 0 white
+
+  .burger:hover
+    opacity: 0.7
+
+.menu-popup, .cart-popup
+  position: absolute
+.products-popup, .search-popup
+  position: fixed
+.menu-popup, .cart-popup, .products-popup, .search-popup
+  height: fit-content
+  width: 100%
+  box-shadow: 1px 19px 16px 4px #0c0c0c4f
+  background: linear-gradient(90deg, #040e28, #071c54)
+  color: white
+  text-align: center
+  padding: 20px
+  font: smaller "Montserrat"
+
+  ul
+    padding-inline-start: 0
+    li
+      margin: 10px
+      list-style: none
+
+.products-popup, .search-popup
+  margin-top: auto
+  margin-bottom: 62px
+  bottom: 0
+  box-shadow: 1px -19px 16px 4px #0000004f
+
+.search-popup
+  form
+    border: 1px solid white
+    border-radius: 25px
+    color: white
+    padding: 5px
+    input, button
+      background: none
+      border: none
+      color: white
+    input:focus
+      outline: none
+    ::placeholder
+      color: white
+
+@media (max-width: 744px)
+  #nav-container
+    display: none
+
+  #mega-menu
+    display: none
+
+  #mobile-menu
+    display: block
+
+    a
+      color: white
+      list-style: none
+      text-decoration: none
+
+li:hover
+  cursor: pointer
+  background-color: #13234ee7
+  border-radius: 7.5px
+  font-size: medium
+  font-weight: 500
+
+.products-popup
+  a
+    color: white
+    list-style: none
+    text-decoration: none

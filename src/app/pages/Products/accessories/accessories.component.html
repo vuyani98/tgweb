@@ -1,0 +1,49 @@
+<div class="container">
+
+  <div class="products">
+    <h3>Accessories Products</h3>
+
+    <div class="products-container">
+
+      <div *ngFor="let product of products" class="col-xs-12 col-sm-6 col-md-3 col-lg-3 product" (click)="show_one(product.id)" >
+        <div class="img-container">
+          <img src="{{product.image_url}}" alt="{{product.product_code}}" loading="lazy" width="90%" height="120px">
+        </div>
+        <div class="product-details">
+          <div class="product-code">{{product.product_code}}</div>
+          <p>{{product.supplier_code}}</p>
+          <div class="product-price">{{product.retail_price}}</div>
+          <div class="buy-now">BUY NOW</div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<div class="one-product" [ngStyle]="{display : one_product_display}">
+
+  <div class="col-12 col-sm-12 col-md-6 col-lg-6 image" >
+    <img src="{{one_product.image_url}}" alt="" width="90% ">
+  </div>
+
+  <div class="product-info">
+    <div (click)="close_prod()" style="float: right">X</div>
+    <h3>{{one_product.product_code}}</h3>
+    <p>{{one_product.supplier_code}}</p>
+    <br>
+    <div>
+      <p>{{one_product.description}}</p>
+    </div>
+    <div>
+      <h5 style="margin-top:50px">{{one_product.price}}</h5>
+      <div class="buttons">
+        <button class="add-to-cart">Add to cart</button>
+        <button class="checkout">Checkout</button>
+      </div>
+    </div>
+  </div>
+
+</div>

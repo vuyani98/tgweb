@@ -1,0 +1,82 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap'
+
+body
+  font-family: "Montserrat"
+  color: #13234E
+
+h1,h2, h3, h4, h5, h6
+  font-family: Poppins
+  font-weight: 600
+
+#signin, #signup
+  text-align: center
+  padding: 20px
+  margin-top: 80px
+
+  .container
+    margin-top: 20px
+    justify-content: center
+
+    #right
+      z-index: 1
+      padding: 20px
+      display: flex
+      flex-direction: column
+      text-align: left
+
+      h3
+        font-family: "Poppins"
+        font-weight: 700
+
+      form
+        .input-container
+            font-family: "Montserrat"
+            color: #1F3065
+            margin-top: 35px
+
+            input
+              padding: 20px
+              width: 75%
+              height: 40px
+              border: 1px #1f306536 solid
+              border-radius: 30px
+
+        .input-btn
+
+          button
+            margin-top: 35px
+            background-color: #e5412b
+            color: white
+            width: 100px
+            height: 40px
+            border: 1px solid #e5412b
+            border-radius: 20px
+            font-family: "Montserrat"
+
+          button:hover
+            box-shadow: 4px 4px 14px 3px #ff9090
+
+          a
+            text-decoration: none
+            margin-left: 15px
+            color: #1F3065
+            font-weight: 600
+            font-size: 12px
+
+          a:hover
+            text-decoration: underline
+
+@media (max-width:720px)
+
+  #signin, #signup
+
+    #logo
+      height: 120px
+
+    .container
+      #left
+        opacity: 0.2
+

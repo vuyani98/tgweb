@@ -1,0 +1,138 @@
+.container
+  min-height: 80vh
+  margin-top: 30px
+  max-width: 1200px
+  text-align: center
+
+  .catergory-heading
+    font-weight: bold
+
+  .catergories
+    display: flex
+    justify-content: center
+    flex-wrap: wrap
+
+    .catergory-container:hover
+      cursor: pointer
+
+    .catergory-container
+      margin: 15px
+      padding: 25px
+      background: white
+      box-shadow: 2px 2px 16px 2px #3d3d3d11
+      border-radius: 15px
+      .img-container
+        height: 120px
+
+        img
+          height: 100%
+
+      p
+        font-size: small
+        text-align: left
+
+      h6
+        margin-top: 15px
+        margin-bottom: 15px
+
+  .products
+    margin-top: 70px
+
+    .products-container
+      display: flex
+      flex-wrap: wrap
+      justify-content: center
+
+      .product
+        margin: 15px
+        padding: 20px
+        text-align: center
+        box-shadow: 2px 2px 16px 2px #3d3d3d11
+        border-radius: 15px
+
+        .img-container
+          height: 200px
+          background: white
+          display: flex
+          justify-content: center
+          align-items: center
+
+          img
+            width: 100%
+            height: 150px
+
+        .product-details
+          .product-code
+            font-weight: bold
+
+          .product-price
+            font-weight: bold
+            font-size: large
+            font-family: Poppins
+            color: #199319
+          p
+            font-style: italic
+            font-size: small
+
+          .buy-now
+            background: radial-gradient(#8da4c7, #606dafd6)
+            height: 30px
+            color: white
+            border: 2px solid #7695b5
+            font-size: small
+            box-shadow: 2px 3px 5px 1px #cfcfcf
+            font-weight: bold
+            border-radius: 9px
+            display: flex
+            align-items: center
+            justify-content: center
+
+
+.one-product
+  display: none
+  position: fixed
+  top: 0
+  left: 0
+  height: 85vh
+  background: #000000bf
+  z-index: 1
+  margin: 50px
+  justify-content: space-around
+
+  .image
+    display: flex
+    align-items: center
+    justify-content: center
+
+  .product-info
+    background: linear-gradient(90deg, #13234e, #020b20)
+    color: white
+    font-size: smaller
+    padding: 30px
+
+    .buttons
+      display: flex
+      justify-content: flex-start
+
+      button
+        margin-top: 50px
+        margin-right: 20px
+        border: 2px #ffffff1f solid
+        border-radius: 10px
+        box-shadow: 11px 5px 20px 3px #00000088
+        height: 35px
+        font-weight: bolder
+        width: 125px
+        letter-spacing: 1px
+        color: white
+
+      .add-to-cart
+        background: linear-gradient(45deg, #020b20, #13234e)
+
+      .checkout
+        background: linear-gradient(45deg, #d8562e, #f00f0f)
+
+@media (max-width: 744px)
+  .one-product
+    margin: 20px
+    flex-wrap: wrap

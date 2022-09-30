@@ -1,0 +1,183 @@
+<div class="hero-container">
+
+  <div class="hero">
+
+    <div class="slide slide1">
+      <div class="content">
+        <div class="sub-heading">
+          <img src="../../../assets/images/hiklogo.png" alt="" width="50%" height="auto" style="max-width: 200px;">
+        </div>
+        <div class="hero-header">
+          Providing world <br> class security <br> systems
+        </div>
+        <div class="hero-button">
+          <button (click)="get_all_products()">SHOP OUR PRODUCTS</button>
+          <a href="https://www.instagram.com/tg__security/"><button>SEE OUR WORK</button></a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+<div class="container">
+
+  <div class="technology acusense">
+    <h4>AcuSense</h4>
+
+    <div class="banner">
+      <div class="col-12 col-md-6 col-lg-6"></div>
+      <div class="col-12 col-md-6 col-lg-6">
+
+        <p>
+          Hikvision’s AcuSense products are ground-breaking
+          as they are built on Artificial intelligence algorithms
+          that are revolutionalizing the security industry. Among
+          the plenty uses of these products, they can be used in
+          setting boundaries, people counting, differentiating between
+           pets and kids e.t.c
+        </p>
+        <button style="background-color: #c7be0f;"  (click)="showVid('acusense')">watch video <img src="../../../assets/images/play.png" height="20px" style="margin-left:10px"> </button>
+      </div>
+    </div>
+
+    <div class="recommended">
+      <h5>Recommended Products</h5>
+      <div class="products">
+
+        <div class="product col-12 col-md-4 col-lg-3">
+          <img src="../../../assets/images/network.png" alt="" height="150px" >
+          <h6>Network Cameras</h6>
+          <button (click)="getProducts('Network')">shop</button>
+        </div>
+
+        <div class="product col-12 col-md-4 col-lg-3">
+          <img src="../../../assets/images/ptz.png" alt="" height="150px" >
+          <h6>PTZ Cameras</h6>
+          <button (click)="getProducts('PTZ')">shop</button>
+        </div>
+
+        <div class="product col-12 col-md-4 col-lg-3">
+          <img src="../../../assets/images/nvr.png" alt="" height="150px" >
+          <h6>Network Video Recorder</h6>
+          <button (click)="getProducts('NVR')">shop</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="technology colorvu">
+    <h4>ColorVu</h4>
+
+    <div class="banner">
+      <div class="col-12 col-md-6 col-lg-6"></div>
+      <div class="col-12 col-md-6 col-lg-6">
+
+        <p>
+          If you are looking for a color view of your CCTV 24/7,
+          look no further. The ColorVu series is built to produce
+          ultra clear and color footage even when taken at night.
+          It is useful in any situation where color of footage is
+          important especially when its dark or theres poor lighting.
+        </p>
+        <button style="background-color: #252E37;"  (click)="showVid('colorvu')">watch video <img src="../../../assets/images/play.png" height="20px" style="margin-left:10px"></button>
+      </div>
+    </div>
+
+    <div class="recommended">
+      <h5>Recommended Products</h5>
+      <div class="products">
+
+        <div class="product col-12 col-md-4 col-lg-3" *ngFor="let product of colorProducts">
+          <img src="{{product.image_url}}" alt="" width=auto  height=100px style="margin-bottom:10px;">
+          <h6 style="font-size: smaller;">{{product.product_code}}</h6>
+            <h6 class="price">{{product.retail_price}}</h6>
+          <button (click)="show_one(product.id)">add to cart</button>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="technology axpro">
+    <h4>AX Pro</h4>
+
+    <div class="banner">
+      <div class="col-12 col-md-6 col-lg-6">
+
+        <p>
+          Ax pro intruder alarm is one of the most innovative
+          wireless alarm systems out right now.  It gives the
+          user a short video of the zone which triggers the
+          alarm and allows the user to arm and disarm the alarm
+          remotely using a mobile device.
+        </p>
+        <button style="background-color: #252E37;" (click)="showVid('axpro')">watch video <img src="../../../assets/images/play.png" height="20px" style="margin-left:10px"></button>
+      </div>
+      <div class="col-12 col-md-6 col-lg-6" style="display: flex; justify-content:end;">
+        <img src="../../../assets/images/remote-viewing.png" alt="" height="250px" style="margin-bottom:-35px">
+      </div>
+
+    </div>
+
+    <div class="recommended">
+      <h5>Recommended Products</h5>
+      <div class="products">
+
+        <div class="product col-12 col-md-4 col-lg-3">
+          <img src="../../../assets/images/panel.png" alt="" height="120px" width="auto">
+          <h6>Panels</h6>
+          <button (click)="getProducts('Panels')">view products</button>
+        </div>
+
+        <div class="product col-12 col-md-4 col-lg-3">
+          <img src="../../../assets/images/detector.png" alt="" height="120px"width="auto">
+          <h6>Detectors</h6>
+          <button (click)="getProducts('Detectors')">view products</button>
+        </div>
+
+        <div class="product col-12 col-md-4 col-lg-3">
+          <img src="../../../assets/images/kit.png" alt="" height="120px"  width="auto">
+          <h6>Kits</h6>
+          <button (click)="getProducts('Kits')">view products</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<div id="vid-modal" [ngStyle]="{ display : displayVid}">
+  <div style="float:right; font-size:large; color: white; margin: 10px;" (click)="hideVid()">X</div>
+  <iframe [src]="vidLink" frameborder="0" loading="lazy" allowfullscreen></iframe>
+</div>
+
+
+<div class="one-product" [ngStyle]="{display : one_product_display}">
+
+  <div class="col-12 col-sm-12 col-md-6 col-lg-6 image" >
+    <img src="{{one_product.image_url}}" alt="" width="90% ">
+  </div>
+
+  <div class="product-info">
+    <div (click)="close_prod()" style="float: right">X</div>
+    <h3>{{one_product.product_code}}</h3>
+    <p>{{one_product.supplier_code}}</p>
+    <br>
+    <div>
+      <p>{{one_product.description}}</p>
+    </div>
+    <div>
+      <h5 style="margin-top:50px">{{one_product.price}}</h5>
+      <div class="buttons">
+        <button class="add-to-cart">Add to cart</button>
+        <button class="checkout">Checkout</button>
+      </div>
+    </div>
+  </div>
+
+</div>

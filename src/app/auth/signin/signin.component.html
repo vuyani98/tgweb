@@ -1,0 +1,33 @@
+<div id="signin">
+
+  <a href="/"><img id="logo" src="../../../assets/images/blue.png" alt="" height="160px"></a>
+  <div class="container" style="display: flex; flex-wrap: nowrap;">
+
+    <div id="left" class="col-md-6 col-lg-6">
+      <img src="../../../assets/images/security.svg" alt="" height="100%">
+    </div>
+
+    <div id="right" class="col-md-6 col-lg-6">
+      <h3>Log In</h3>
+      <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+
+        <div class="input-container">
+          <p>Email Address</p>
+          <input id="identifier" type="text" formControlName="identifier">
+        </div>
+
+        <div class="input-container">
+          <p>Password</p>
+          <input id="password" type="password" formControlName="password">
+        </div>
+
+        <div class="input-btn">
+          <button type="submit">Log In</button> <a routerLink="/auth/signup">Don't have a account yet?</a>
+        </div>
+
+      </form>
+    </div>
+
+  </div>
+
+</div>

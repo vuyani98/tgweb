@@ -1,0 +1,208 @@
+<div id="nav-container" style="margin: 0; background: linear-gradient(45deg, #040e28, #071c54)">
+  <div id="header">
+
+    <div class="left">
+      <div id="logo" >
+        <img (click)="goHome()" src="../../../../assets/images/white.png" alt="" height="82px">
+      </div>
+    </div>
+
+    <div class="right">
+
+      <div id="phone-number">
+        <a>+27 101 402 628</a>
+      </div>
+
+
+
+      <div id="menu">
+        <ul>
+          <li>
+            <a routerLink="" routerLinkActive="active">HOME</a>
+          </li>
+          <li>
+            <a >
+              PRODUCTS
+              <span (click)="mega_menu()">
+                 <img src="../../../../assets/images/icons8-sort-down-50.png" height="16px" style="margin-top: -4px;">
+              </span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/auth/login" routerLinkActive="active">ACCOUNT</a>
+          </li>
+          <li>
+            <a routerLink="" routerLinkActive="active">CART</a>
+          </li>
+        </ul>
+      </div>
+
+
+      <div id="search">
+        <form [formGroup]="searchForm" (ngSubmit)="search()">
+          <input formControlName="term" type="text" placeholder="SEARCH PRODUCTS">
+          <button type="submit"><img src="../../../../assets/images/search.png" height="30px"></button>
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+<div id="mega-menu" [ngStyle]="{display : mega_menu_display}">
+
+  <h4 class="heading">Products</h4>
+
+  <div class="mega-menu-info">
+    <div class="catergories col-4">
+
+      <div class="item" *ngFor="let cat of catergories | keyvalue" (mouseover)="subs(cat.value)">
+        <div>
+          <a routerLink="{{cat.key}}">{{ cat.key }}</a>
+        </div>
+        <div class="arrow" >
+          >
+        </div>
+      </div>
+
+    </div>
+
+    <div class="subcatergories col-4">
+      <div class="item" *ngFor="let sub of subcatergories | keyvalue" (mouseover)="prods(sub.value)" (click)="getProducts(sub.key)">
+        <div>
+          {{ sub.key }}
+        </div>
+        <div class="arrow" >
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="products col-4">
+      <ul>
+        <li style="list-style:none;" *ngFor="let product of products" (click)="getProducts(product)">
+          {{product}}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<div id="mobile-menu" >
+
+  <div class="top">
+
+    <div class="left col-4" style="display: flex; justify-content: center; flex-direction: column;" (click)="show_popup('menu')">
+      <div class="icon" style="margin-top: 25px;">
+        <div class="burger" >
+          <div class="burger-menu"></div>
+        </div>
+      </div>
+      <div class="title">MENU</div>
+    </div>
+
+    <div class="center col-4">
+
+      <div id="logo">
+        <a href="/"><img src="../../../../assets/images/white.png" alt="" height="65px"></a>
+      </div>
+
+    </div>
+
+    <div class="right col-4"  (click)="show_popup('cart')">
+      <div class="icon"> <img src="../../../../assets/images/cart.png" height="25px"> </div>
+      <div class="title">CART</div>
+    </div>
+
+  </div>
+
+  <div class="bottom">
+
+    <div class="left col-4">
+      <div class="icon"> <img src="../../../../assets/images/account.png" height="25px"> </div>
+      <a routerLink="/auth/login"><div class="title">ACCOUNT</div></a>
+    </div>
+
+    <div class="center col-4"  (click)="show_popup('products')">
+      <div class="icon"> <img src="../../../../assets/images/icons8-sort-down-50.png" height="25px" style="transform: rotate(180deg);"> </div>
+      <div class="title">PRODUCTS</div>
+    </div>
+
+    <div class="right col-4"  (click)="show_popup('search')">
+      <div class="icon"> <img src="../../../../assets/images/white-search.png"height="20px"> </div>
+      <div class="title">SEARCH</div>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="menu-popup" [ngStyle]="{display : menu_display}">
+  <ul>
+    <li (click)="getProducts('all')">SHOP ALL PRODUCTS</li>
+    <li>CHECKOUT</li>
+  </ul>
+  <hr style=" opacity: 0.5 !important; background-color: #13234E; width: 70%; margin-right: auto; margin-left: auto;">
+  <ul>
+    <!-- <li>ABOUT US</li> -->
+    <!-- <li>BLOGS</li> -->
+  </ul>
+  <hr style=" opacity: 0.5 !important; background-color: #13234E; width: 70%; margin-right: auto; margin-left: auto;">
+  <div>
+    FOLLOW US
+    <br>
+    <div>
+      <a href="https://www.facebook.com/true.guardian55"><img src="../../../../assets/images/fb.png" alt="" height="30px" style="margin: 5px;"></a>
+      <a href="https://www.instagram.com/tg__security/"><img src="../../../../assets/images/ig.png" alt="" height="30px" style="margin: 5px;"></a>
+      <a href="https://twitter.com/tg__security/"><img src="../../../../assets/images/tw.png" alt="" height="30px" style="margin: 5px;"></a>
+    </div>
+    <strong>+27 101 402 628</strong>
+  </div>
+</div>
+
+<div class="cart-popup" [ngStyle]="{display : cart_display}">
+  cart works!
+</div>
+
+
+<div class="products-popup" [ngStyle]="{display : products_display}">
+
+  <div class="mobile-catergories" [ngStyle]="{display : mobile_cart_display}">
+    <span style="letter-spacing: 9px;">CATERGORIES</span>
+    <ul>
+      <li *ngFor="let cart of catergories | keyvalue">
+       <a href="{{cart.key}}">{{ cart.key }} </a> <strong (click)="mobile_subs(cart.value)" >></strong>
+      </li>
+    </ul>
+  </div>
+
+  <div class="mobile-sub-catergories" [ngStyle]="{display : mobile_sub_display}">
+    <span (click)="mobile_subs()" style="letter-spacing: 9px">SUB-CATERGORIES < </span>
+    <ul>
+      <li *ngFor="let sub of subcatergories | keyvalue" (click)="getProducts(sub.key)">
+        {{sub.key}} <strong (click)="mobile_prod(sub.value)">></strong>
+      </li>
+    </ul>
+  </div>
+
+  <div class="mobile-products" [ngStyle]="{display : mobile_prod_display}">
+    <span (click)="mobile_prod()" style="letter-spacing: 9px">PRODUCTS < </span>
+    <ul>
+      <li *ngFor="let prod of products">
+        {{prod}}
+      </li>
+    </ul>
+  </div>
+
+
+</div>
+
+<div class="search-popup" [ngStyle]="{display : search_display}">
+    <form action="">
+      <input type="text" placeholder="SEARCH PRODUCTS">
+      <button type="submit"><img src="../../../../assets/images/search.png" height="25px"></button>
+    </form>
+</div>
