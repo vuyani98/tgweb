@@ -174,7 +174,7 @@
     <span style="letter-spacing: 9px;">CATERGORIES</span>
     <ul>
       <li *ngFor="let cart of catergories | keyvalue">
-       <a href="{{cart.key}}">{{ cart.key }} </a> <strong (click)="mobile_subs(cart.value)" >></strong>
+       <a routerLink="{{cart.key}}">{{ cart.key }} </a> <strong (click)="mobile_subs(cart.value)" >></strong>
       </li>
     </ul>
   </div>
@@ -201,8 +201,8 @@
 </div>
 
 <div class="search-popup" [ngStyle]="{display : search_display}">
-    <form action="">
-      <input type="text" placeholder="SEARCH PRODUCTS">
+    <form [formGroup]="searchForm" (ngSubmit)="search()">
+      <input formControlName="term" type="text" placeholder="SEARCH PRODUCTS">
       <button type="submit"><img src="../../../../assets/images/search.png" height="25px"></button>
     </form>
 </div>

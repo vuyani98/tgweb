@@ -60,12 +60,12 @@ export class HeaderComponent implements OnInit {
         this.mobile_prod_display = "none";
       }
 
-      if( this.mobile_sub_display != "none"){
-        this.mobile_sub_display = "none";
+      if( this.products_display != "none"){
+        this.products_display = "none";
       }
 
-      if( this.menu_display != "none"){
-        this.menu_display = "none";
+      if( this.mobile_sub_display != "none"){
+        this.mobile_sub_display = "none";
       }
 
     })

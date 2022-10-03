@@ -32,6 +32,10 @@ export class ProductsComponent implements OnInit {
         this.get_all()
       }
 
+      else if(this.header == 'Alarm')[
+        this.header = 'Ax Pro'
+      ]
+
       else{
         this.get_products()
       }
