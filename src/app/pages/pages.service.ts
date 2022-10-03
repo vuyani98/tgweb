@@ -17,19 +17,19 @@ export class PagesService {
   constructor( private http: HttpClient) { }
 
   products_using_name(name:string):Observable<any>{
-    return this.http.get(`${API_PATH}/catergories/?name=${name}`)
+    return this.http.get(`${API_PATH}/catergories?filters[name][$eq]=${name}&populate=%2A`)
   }
 
   catergories_using_contains(name:string):Observable<any>{
-    return this.http.get(`${API_PATH}/catergories?name_contains=${name}`)
+    return this.http.get(`${API_PATH}/catergories?filters[name][$contains]=${name}&populate=%2A`)
   }
 
   products_using_contains(name:string):Observable<any>{
-    return this.http.get(`${API_PATH}/products?description_contains=${name}`)
+    return this.http.get(`${API_PATH}/products?filters[description][$contains]=${name}&populate=%2A`)
   }
 
   all_products():Observable<any>{
-    return this.http.get(`${API_PATH}/products`)
+    return this.http.get(`${API_PATH}/products?populate=%2A`)
   }
 
 }

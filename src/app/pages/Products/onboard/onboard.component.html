@@ -5,7 +5,7 @@
 
     <div class="products-container">
 
-      <div *ngFor="let product of products" class="col-xs-12 col-sm-6 col-md-3 col-lg-3 product" (click)="show_one(product.id)" >
+      <div *ngFor="let product of products " class="col-xs-12 col-sm-6 col-md-3 col-lg-3 product" (click)="show_one(product.id)" >
         <div class="img-container">
           <img src="{{product.image_url}}" alt="{{product.product_code}}" loading="lazy" width="90%" height="120px">
         </div>
@@ -23,7 +23,7 @@
 
 </div>
 
-<div class="one-product" [ngStyle]="{display : one_product_display}">
+<div class="one-product" [ngStyle]="{'display' : one_product_display}">
 
   <div class="col-12 col-sm-12 col-md-6 col-lg-6 image" >
     <img src="{{one_product.image_url}}" alt="" width="90% ">

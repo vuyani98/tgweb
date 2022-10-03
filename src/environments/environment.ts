@@ -4,7 +4,7 @@
 
 export const environment = {
   production: true,
-  API_PATH: 'http://localhost:1337/api'
+  API_PATH: 'https://strapi-erjo.onrender.com/api' //'http://localhost:1337/api''
 };
 
 /*

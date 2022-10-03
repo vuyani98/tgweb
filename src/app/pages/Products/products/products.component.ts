@@ -10,7 +10,7 @@ import { PagesService } from '../../pages.service';
 export class ProductsComponent implements OnInit {
 
    header:string = '';
-   products: any;
+   products: any = [];
    catergories: any
    one_product = {
      image_url: '',
@@ -42,21 +42,34 @@ export class ProductsComponent implements OnInit {
   get_products(){
 
     this.service.catergories_using_contains(this.header).subscribe(data => {
-
+      let raw_products = data.data[0].attributes.products.data;
+      console.log(data)
       if (this.header == 'PTZ'){
-        this.products = data[1].products;
-        this.products.push(data[0].products);
+        for (let i=0; i<data.data.length; i++){
+          let raw_ptz= data.data[i].attributes.products.data;
+          for (let j=0; j<raw_ptz.length; j++){
+            this.products[j] = raw_ptz[j].attributes
+            this.products[j]['id'] = raw_ptz[j].id
+          }
+        }
       }
       else{
-       this.products = data[0].products;
+        for(let i=0; i<raw_products.length;i++){
+          this.products[i] = raw_products[i].attributes
+          this.products[i]['id'] = raw_products[i].id
+        }
       }
     })
   }
 
   get_all(){
     this.service.all_products().subscribe(data => {
-      this.products = data
       console.log(data)
+
+      for(let i=0; i<data.data.length;i++){
+        this.products[i] = data.data[i].attributes
+        this.products[i]['id'] = data.data[i].id
+      }
     })
   }
 

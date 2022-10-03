@@ -8,7 +8,7 @@ import { PagesService } from '../../pages.service';
 })
 export class AlarmComponent implements OnInit {
 
-  products: any;
+  products: any = [];
   catergories: any
   one_product = {
     image_url: '',
@@ -23,11 +23,13 @@ export class AlarmComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.catergories_using_contains('ax%pro').subscribe(data => {
-      this.products = []
+      this.products = [];
 
-      for (let i=0; i<data.length; i++){
-        for (let j=0; j<data[i].products.length; j++){
-          this.products.push(data[i].products[j])
+      for (let i=0; i<data.data.length; i++){
+        let raw_products = data.data[i].attributes.products.data;
+        for (let j=0; j<raw_products.length; j++){
+          this.products[j] = raw_products[j].attributes
+          this.products[j]['id'] = raw_products[j].id
         }
       }
 
@@ -36,10 +38,16 @@ export class AlarmComponent implements OnInit {
   }
 
   show_subCatergory(sub:string){
-    console.log('called')
     this.service.catergories_using_contains(sub).subscribe(data => {
-      this.products = data[0].products;
-      console.log(this.products)
+      console.log(data)
+      this.products = []
+      let raw_products = data.data[0].attributes.products.data;
+
+      for(let i=0; i<raw_products.length;i++){
+        this.products[i] = raw_products[i].attributes
+        this.products[i]['id'] = raw_products[i].id
+      }
+
     });
   }
 

@@ -8,7 +8,7 @@ import { PagesService } from '../../pages.service';
 })
 export class VideoIntercomComponent implements OnInit {
 
-  products: any;
+  products: any = [];
   catergories: any
   one_product = {
     image_url: '',
@@ -23,7 +23,12 @@ export class VideoIntercomComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.products_using_name('Video Intercomm').subscribe(data=>{
-      this.products = data[0].products
+      let raw_products = data.data[0].attributes.products.data;
+
+      for(let i=0; i<raw_products.length;i++){
+        this.products[i] = raw_products[i].attributes
+        this.products[i]['id'] = raw_products[i].id
+      }
     })
   }
 

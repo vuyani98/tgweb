@@ -7,7 +7,7 @@ import { PagesService } from '../../pages.service';
 })
 export class TurboComponent implements OnInit {
 
-  products: any;
+  products: any = [];
   one_product = {
     image_url: '',
     product_code: '',
@@ -21,17 +21,25 @@ export class TurboComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.products = this.service.products_using_name('Analogue/Turbo').subscribe(data => {
-      this.products = data[0].products
-      console.log(this.products);
+    this.service.products_using_name('Analogue/Turbo').subscribe(data => {
+      let raw_products = data.data[0].attributes.products.data;
+
+      for(let i=0; i<raw_products.length;i++){
+        this.products[i] = raw_products[i].attributes
+        this.products[i]['id'] = raw_products[i].id
+      }
     });
   }
 
   show_subCatergory(sub:string){
     console.log('called')
     this.service.products_using_name(sub).subscribe(data => {
-      this.products = data[0].products;
-      console.log(this.products)
+      let raw_products = data.data[0].attributes.products.data;
+
+      for(let i=0; i<raw_products.length;i++){
+        this.products[i] = raw_products[i].attributes
+        this.products[i]['id'] = raw_products[i].id
+      }
     });
   }
 

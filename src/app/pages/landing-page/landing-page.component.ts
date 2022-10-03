@@ -60,10 +60,16 @@ export class LandingPageComponent implements OnInit {
 
   getcolorVu(){
     this.service.products_using_name('ColorVu').subscribe(data => {
-      this.colorProducts.push(data[0].products[2]);
-      this.colorProducts.push(data[0].products[4]);
-      this.colorProducts.push(data[0].products[7]);
-      console.log(this.colorProducts)
+      let raw_products = data.data[0].attributes.products.data;
+
+      this.colorProducts[0] = raw_products[2].attributes;
+      this.colorProducts[0]['id'] = raw_products[2].id
+
+      this.colorProducts[1] = raw_products[4].attributes;
+      this.colorProducts[1]['id'] = raw_products[4].id;
+
+      this.colorProducts[2] = raw_products[8].attributes;
+      this.colorProducts[2]['id'] = raw_products[8].id;
     })
   }
 

@@ -8,23 +8,28 @@ import { PagesService } from '../../pages.service';
 })
 export class OnboardComponent implements OnInit {
 
-  products: any;
-  catergories: any
+  products: any[] = [];
+  catergories: any;
   one_product = {
     image_url: '',
     product_code: '',
     price: '',
     description:'',
     supplier_code: ''
-  }
-  one_product_display: string = 'none'
+  };
+  one_product_display: string = 'none';
 
   constructor( private service: PagesService) { }
 
   ngOnInit(): void {
-    this.products = this.service.products_using_name('Dashcam').subscribe(data => {
-      this.products = data[0].products
-      console.log(data);
+    this.service.products_using_name('Dashcam').subscribe(data => {
+      let raw_products = data.data[0].attributes.products.data;
+
+      for(let i=0; i<raw_products.length;i++){
+        this.products[i] = raw_products[i].attributes
+        this.products[i]['id'] = raw_products[i].id
+      }
+      console.log(this.products[0])
     });
   }
 
