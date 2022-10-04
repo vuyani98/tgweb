@@ -9,6 +9,8 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { LazyimgDirective } from './lazyimg.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {IvyCarouselModule} from 'angular-responsive-carousel';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +25,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     ReactiveFormsModule,
     CloudinaryModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    IvyCarouselModule
   ],
   providers: [CloudinaryModule],
   bootstrap: [AppComponent]

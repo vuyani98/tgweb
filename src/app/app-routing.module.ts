@@ -6,11 +6,10 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 const routes: Routes = [
   { path: '', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)},
   { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
-  { path: '**', component: PageNotFoundComponent}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'})],
+  imports: [RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled', useHash: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

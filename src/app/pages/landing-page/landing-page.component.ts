@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { PagesService } from '../pages.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { CarouselComponent } from 'angular-responsive-carousel';
 
 @Component({
   selector: 'app-landing-page',
@@ -23,12 +24,22 @@ export class LandingPageComponent implements OnInit {
     description:'',
     supplier_code: ''
   };
+  products: any[] = [];
   one_product_display: string = 'none'
 
   constructor(private service: PagesService, private router: Router, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
-    this.getcolorVu()
+    this.getcolorVu();
+    this.service.products_using_name('Analogue/Turbo').subscribe(data => {
+      let raw_products = data.data[0].attributes.products.data;
+
+      for(let i=0; i<raw_products.length;i++){
+        this.products[i] = raw_products[i].attributes
+        this.products[i]['id'] = raw_products[i].id
+      }
+    })
+
   }
 
   get_all_products(){

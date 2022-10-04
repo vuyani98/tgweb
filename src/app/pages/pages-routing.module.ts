@@ -28,6 +28,7 @@ const routes: Routes = [
   { path: 'Software', component: SoftwareComponent},
   { path: 'products/', component: ProductsComponent},
   { path: 'search', component: SearchResultComponent},
+  { path: '**', component: PageNotFoundComponent}
 
 ];
 

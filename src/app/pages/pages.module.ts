@@ -19,6 +19,7 @@ import { AcusenseComponent } from './acusense/acusense.component';
 import { AxproComponent } from './axpro/axpro.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import {IvyCarouselModule} from 'angular-responsive-carousel';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
   imports: [
     CommonModule,
     PagesRoutingModule,
+    IvyCarouselModule
   ]
 })
 export class PagesModule { }
