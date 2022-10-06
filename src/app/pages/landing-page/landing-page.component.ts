@@ -3,6 +3,7 @@ import { Route, Router } from '@angular/router';
 import { PagesService } from '../pages.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CarouselComponent } from 'angular-responsive-carousel';
+import { localizedString } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-landing-page',
@@ -26,6 +27,7 @@ export class LandingPageComponent implements OnInit {
   };
   products: any[] = [];
   one_product_display: string = 'none'
+
 
   constructor(private service: PagesService, private router: Router, private sanitizer: DomSanitizer) { }
 
@@ -113,6 +115,22 @@ export class LandingPageComponent implements OnInit {
 
   close_prod(){
     this.one_product_display = 'none'
+  }
+
+  addtocart(product:any){
+    let cartlist = localStorage.getItem('cart');
+    let newItem = JSON.stringify(product);
+
+    if(cartlist==''){
+      cartlist = cartlist+newItem;
+    }
+    else{
+      cartlist = cartlist+','+newItem;
+    }
+
+    localStorage.setItem('cart', cartlist);
+    console.log(localStorage.getItem('cart'))
+
   }
 
 
