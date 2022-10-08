@@ -52,7 +52,17 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
 
-    window.addEventListener('storage', this.storageListener)
+    window.addEventListener('storage', () => {
+      console.log('changes')
+      let cart = localStorage.getItem('cart');
+        cart = '[' +cart+ ']'
+
+        if (cart != null ){
+          let cartObj = JSON.parse(cart)
+          this.cartLength = Object.keys(cartObj).length
+          console.log(this.cartLength)
+        }
+    })
 
     let cart = localStorage.getItem('cart');
     cart = '[' +cart+ ']'
@@ -85,6 +95,7 @@ export class HeaderComponent implements OnInit {
     })
   }
   storageListener(){
+    console.log('changes')
     let cart = localStorage.getItem('cart');
       cart = '[' +cart+ ']'
 

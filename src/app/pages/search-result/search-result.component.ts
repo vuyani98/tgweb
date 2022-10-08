@@ -58,5 +58,19 @@ export class SearchResultComponent implements OnInit {
   close_prod(){
     this.one_product_display = 'none'
   }
+  addtocart(product:any){
+    let cartlist = localStorage.getItem('cart');
+    let newItem = JSON.stringify(product);
+
+    if(cartlist==''){
+      cartlist = cartlist+newItem;
+    }
+    else{
+      cartlist = cartlist+','+newItem;
+    }
+    let x = window.open("", "myWindow", "width=1,height=1");
+    x?.localStorage.setItem('cart', cartlist);
+    x?.close();
+  }
 
 }

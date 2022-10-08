@@ -1,3 +1,4 @@
+<script src="https://js.yoco.com/sdk/v1/yoco-sdk-web.js"></script>
 <div class="container">
   <h3>Cart</h3>
   <div style="margin-top: 70px;" *ngFor="let product of cartObjects; index as i ">
@@ -19,7 +20,7 @@
       Total : R {{total}} <span style="font-weight: lighter; font-style:italic; font-size:medium">(VAT Incl.)</span>
     </div>
     <div>
-      <button class="checkout">Checkout</button>
+      <button id="checkout-button" class="checkout">Checkout</button>
     </div>
   </div>
   <div>

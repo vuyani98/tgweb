@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2, ElementRef } from '@angular/core';
 import { Route, Router } from '@angular/router';
 
 @Component({
@@ -11,9 +11,10 @@ export class CartComponent implements OnInit {
   cartObjects:any;
   total: number = 0;
 
-  constructor(private route: Router) { }
+  constructor(private route: Router, private renderer: Renderer2, private element: ElementRef) { }
 
   ngOnInit(): void {
+
     let cart = localStorage.getItem('cart');
     if(!cart)[
       this.route.navigateByUrl('/not-found')
@@ -52,7 +53,10 @@ export class CartComponent implements OnInit {
     let new_cart = cart.replace(`${removedItem}`, '')
     //let cart = this.cartObjects.toString()
     console.log(new_cart)
-    localStorage.setItem('cart', new_cart)
+    let x = window.open("", "myWindow", "width=1,height=1");
+    x?.localStorage.setItem('cart', new_cart);
+    x?.close();
+
   }
 
   calcTotal(){

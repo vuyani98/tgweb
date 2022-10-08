@@ -127,10 +127,9 @@ export class LandingPageComponent implements OnInit {
     else{
       cartlist = cartlist+','+newItem;
     }
-
-    localStorage.setItem('cart', cartlist);
-    console.log(localStorage.getItem('cart'))
-
+    let x = window.open("", "myWindow", "width=1,height=1");
+    x?.localStorage.setItem('cart', cartlist);
+    x?.close();
   }
 
 
