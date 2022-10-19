@@ -10,13 +10,17 @@ import { HeaderComponent } from './layout/header/header.component';
 import { LazyimgDirective } from './lazyimg.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {IvyCarouselModule} from 'angular-responsive-carousel';
+import { CartComponent } from './layout/cart/cart.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    LazyimgDirective
+    LazyimgDirective,
+    CartComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

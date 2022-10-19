@@ -11,8 +11,78 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://js.yoco.com/sdk/v1/yoco-sdk-web.js"></script>
 </head>
 <body>
-  <app-root></app-root>
+  <app-root>
+    <script>
+      var yoco = new window.YocoSDK({
+        publicKey: 'pk_test_ed3c54a6gOol69qa7f45',
+      });
+      window.addEventListener('storage', () => {
+      let listen2pay = localStorage.getItem('listen2pay');
+    })
+
+    window.onpopstate = () => {
+      var checkoutButton = document.querySelector("#checkout-button");
+       if (checkoutButton){
+        checkoutButton.setAttribute('onclick', clickos())
+       }
+    }
+
+    function clickos (){
+      let amount = Number(localStorage.getItem('total').replace(/[^0-9-]+/g,""));
+      yoco.showPopup({
+      amountInCents: amount,
+      currency: 'ZAR',
+      name: 'TG Security Systems',
+      description: '',
+      callback: async function (result) {
+        // This function returns a token that your server can use to capture a payment
+        if (result.error) {
+          const errorMessage = result.error.message;
+          alert("error occured: " + errorMessage);
+        } else {
+          let response = await chargeapi(result.id, amount);
+        }
+        // In a real integration - you would now pass this chargeToken back to your
+        // server along with the order/basket that the customer has purchased.
+      }
+      })
+    }
+
+    async function chargeapi(token, amount){
+
+      await fetch('https://strapi-erjo.onrender.com/api/payments', {
+        method: 'POST',
+        body: JSON.stringify({'token' : token, 'amount': amount})
+      })
+      .then(res => {
+        return res.json();
+      })
+      .then(data =>{
+
+        if (data.status == "successful"){
+          alert("Payment was successful")
+          localStorage.setItem('total', '');
+          localStorage.setItem('cart', '')
+          window.location.href="/";
+        }
+
+        else if (error){
+          alert("Payment Failed")
+        }
+
+        return data
+      })
+      .catch(error => {
+        alert(error)
+        return error
+      });
+
+    }
+
+    </script>
+  </app-root>
 </body>
 </html>

@@ -32,7 +32,7 @@
             <a routerLink="/auth/login" routerLinkActive="active">ACCOUNT</a>
           </li>
           <li>
-            <a routerLink="" routerLinkActive="active">CART</a>
+            <a routerLink="cart" routerLinkActive="active">CART <sup _ngcontent-wgq-c51="" style="background: #769fb8; border-radius: 45%;color: white;font-weight: bold;padding-left: 4px;padding-right: 4px;">{{ cartLength }}</sup></a>
           </li>
         </ul>
       </div>
@@ -162,11 +162,6 @@
     <strong>+27 101 402 628</strong>
   </div>
 </div>
-
-<div class="cart-popup" [ngStyle]="{display : cart_display}">
-  cart works!
-</div>
-
 
 <div class="products-popup" [ngStyle]="{display : products_display}">
 

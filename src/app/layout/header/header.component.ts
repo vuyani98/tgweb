@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
 
@@ -18,6 +18,8 @@ export class HeaderComponent implements OnInit {
   mobile_sub_display = "none";
   mobile_prod_display = "none";
   mobile_menu_display = 'none'
+  display_cart = 'none';
+  cartLength = 0;
 
   catergories = {
     "Network" : {
@@ -50,6 +52,28 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
 
+    window.addEventListener('storage', () => {
+      console.log('changes')
+      let cart = localStorage.getItem('cart');
+        cart = '[' +cart+ ']'
+
+        if (cart != null ){
+          let cartObj = JSON.parse(cart)
+          this.cartLength = Object.keys(cartObj).length
+          console.log(this.cartLength)
+        }
+    })
+
+    let cart = localStorage.getItem('cart');
+    cart = '[' +cart+ ']'
+    let cartObj;
+    if (cart != null){
+      cartObj = JSON.parse(cart)
+      console.log(Object.keys(cartObj).length)
+      this.cartLength = Object.keys(cartObj).length
+    }
+
+
     this.router.events.subscribe((val) => {
 
       if( this.mega_menu_display != "none"){
@@ -69,6 +93,17 @@ export class HeaderComponent implements OnInit {
       }
 
     })
+  }
+  storageListener(){
+    console.log('changes')
+    let cart = localStorage.getItem('cart');
+      cart = '[' +cart+ ']'
+
+      if (cart != null ){
+        let cartObj = JSON.parse(cart)
+        this.cartLength = Object.keys(cartObj).length
+        console.log(this.cartLength)
+      }
   }
 
   // mega menu function

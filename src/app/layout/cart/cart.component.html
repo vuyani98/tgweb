@@ -1,0 +1,29 @@
+<script src="https://js.yoco.com/sdk/v1/yoco-sdk-web.js"></script>
+<div class="container">
+  <h3>Cart</h3>
+  <div style="margin-top: 70px;" *ngFor="let product of cartObjects; index as i ">
+    <div class="product" style="display: flex;">
+      <div class="left" style="height: 100px;">
+        <img src="{{product.image_url}}" alt="" height="100%" width="auto">
+      </div>
+      <div class="right">
+        <h6>{{product.product_code}}</h6>
+        <p style="color: green;">{{product.price}}</p>
+      </div>
+      <div class="right">
+        <button (click)="removeFromCart(i)">Remove From Cart <img src="../../../assets/images/trash.png" alt="" height="16px"></button>
+      </div>
+    </div>
+  </div>
+  <div style="display: flex; justify-content: center; background: #f1f1f1; padding: 10px;">
+    <div style="font-weight: bolder; font-size:larger">
+      Total : R {{total}} <span style="font-weight: lighter; font-style:italic; font-size:medium">(VAT Incl.)</span>
+    </div>
+    <div>
+      <button id="checkout-button" class="checkout"  (click)="checkout()">Checkout</button>
+    </div>
+  </div>
+  <div>
+
+  </div>
+</div>

@@ -40,8 +40,8 @@
     <div>
       <h5 style="margin-top:50px">{{one_product.price}}</h5>
       <div class="buttons">
-        <button class="add-to-cart">Add to cart</button>
-        <button class="checkout">Checkout</button>
+        <button (click)="addtocart(one_product)" class="add-to-cart">Add to cart</button>
+        <a routerLink="/cart"><button class="checkout">Checkout</button></a>
       </div>
     </div>
   </div>
