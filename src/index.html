@@ -16,39 +16,72 @@
 <body>
   <app-root>
     <script>
-        if (window.history) {
-    var myOldUrl = window.location.href;
-    window.addEventListener('hashchange', function(){
-      console.log('crazy things are happening');
-    });
-  }
-      window.onload = () => {
-
-        console.log('hehe')
-      }
       var yoco = new window.YocoSDK({
         publicKey: 'pk_test_ed3c54a6gOol69qa7f45',
       });
-      var checkoutButton = document.querySelector('#checkout-button');
-      checkoutButton.addEventListener('click', function () {
-        yoco.showPopup({
-          amountInCents: 2799,
-          currency: 'ZAR',
-          name: 'Your Store or Product',
-          description: 'Awesome description',
-          callback: function (result) {
-            // This function returns a token that your server can use to capture a payment
-            if (result.error) {
-              const errorMessage = result.error.message;
-              alert("error occured: " + errorMessage);
-            } else {
-              alert("card successfully tokenised: " + result.id);
-            }
-            // In a real integration - you would now pass this chargeToken back to your
-            // server along with the order/basket that the customer has purchased.
-            }
-            })
-          });
+      window.addEventListener('storage', () => {
+      let listen2pay = localStorage.getItem('listen2pay');
+    })
+
+    window.onpopstate = () => {
+      var checkoutButton = document.querySelector("#checkout-button");
+       if (checkoutButton){
+        checkoutButton.setAttribute('onclick', clickos())
+       }
+    }
+
+    function clickos (){
+      let amount = Number(localStorage.getItem('total').replace(/[^0-9-]+/g,""));
+      yoco.showPopup({
+      amountInCents: amount,
+      currency: 'ZAR',
+      name: 'TG Security Systems',
+      description: '',
+      callback: async function (result) {
+        // This function returns a token that your server can use to capture a payment
+        if (result.error) {
+          const errorMessage = result.error.message;
+          alert("error occured: " + errorMessage);
+        } else {
+          let response = await chargeapi(result.id, amount);
+        }
+        // In a real integration - you would now pass this chargeToken back to your
+        // server along with the order/basket that the customer has purchased.
+      }
+      })
+    }
+
+    async function chargeapi(token, amount){
+
+      await fetch('https://strapi-erjo.onrender.com/api/payments', {
+        method: 'POST',
+        body: JSON.stringify({'token' : token, 'amount': amount})
+      })
+      .then(res => {
+        return res.json();
+      })
+      .then(data =>{
+
+        if (data.status == "successful"){
+          alert("Payment was successful")
+          localStorage.setItem('total', '');
+          localStorage.setItem('cart', '')
+          window.location.href="/";
+        }
+
+        else if (error){
+          alert("Payment Failed")
+        }
+
+        return data
+      })
+      .catch(error => {
+        alert(error)
+        return error
+      });
+
+    }
+
     </script>
   </app-root>
 </body>

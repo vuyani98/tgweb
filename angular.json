@@ -34,9 +34,7 @@
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.sass"
             ],
-            "scripts": [
-              "https://js.yoco.com/sdk/v1/yoco-sdk-web.js"
-            ]
+            "scripts": [ ]
           },
           "configurations": {
             "production": {

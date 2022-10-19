@@ -1,1 +1,53 @@
-<p>checkout works!</p>
+<div class="container">
+
+  <h4 class="header">Checkout</h4>
+  <div class="delivery-options">
+    <div class="option"><img src="../../assets/images/collect.png" alt="" height="30px"> Collect Order <input type="radio" name="delivery" value="collect" (change)="tobeDelivered($event.target)"></div>
+    <hr>
+    <div class="option"><img src="../../assets/images/deliver.png" alt="" height="30px"> Deliver Order <input type="radio" name="delivery" value="deliver" (change)="tobeDelivered($event.target)"  [defaultChecked]="true"></div>
+  </div>
+
+  <div style="display:flex; justify-content: center; margin-top: 70px; max-width: 1200px;">
+
+    <div *ngIf="deliver" class="left form col-xs-12 col-sm-12 col-md-6 col-lg-6 col-12">
+      <h6 class="form-header">Add Address</h6>
+      <form action="">
+        <div class="input">
+          <input type="text" placeholder="Receipient Name">
+        </div>
+        <div class="input">
+          <input type="text" placeholder="Receipient Number">
+        </div>
+        <div class="input">
+          <input type="text" placeholder="Street Address">
+        </div>
+        <div class="input">
+          <input type="text" placeholder="Complex / Building">
+        </div>
+        <div class="input">
+          <input type="text" placeholder="Suburb">
+        </div>
+        <div class="input">
+          <input type="text" placeholder="City / Town">
+        </div>
+        <div class="input">
+          <input type="text" placeholder="Province">
+        </div>
+        <div class="input">
+          <input type="number" placeholder="Postal Code">
+        </div>
+      </form>
+    </div>
+
+    <div class="right summary col-xs-12 col-sm-12 col-md-4 col-lg-4 col-12">
+      <h6>Order Summary</h6>
+      <div class="order-info">
+        <div> <strong>Items Qty :</strong>  <span style="float:right;">{{items}}</span></div>
+        <div> <strong>Total :</strong> <span style="float:right;">R{{total}}</span></div>
+        <div><a href="#/checkout"><button id="checkout-button" class="checkout" >PAY</button></a></div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

@@ -15,6 +15,14 @@ export class AppComponent implements OnInit{
   constructor(private router: Router, private actRoute: ActivatedRoute){
     this.router.events.subscribe(event => {
 
+      if(this.router.url == "/cart"){
+        localStorage.setItem('listen2pay', 'true')
+      }
+
+      else{
+        localStorage.setItem('listen2pay', 'false')
+      }
+
       if (this.router.url == "/auth/login" || this.router.url == "/auth/signup"){
         this.showMen = 'None'
       }

@@ -68,8 +68,16 @@ export class CartComponent implements OnInit {
       //console.log(price)
       //console.log(parseFloat(price))
       this.total += price
-      console.log(this.total.toFixed(2))
+      this.total = +this.total.toFixed(2)
     }
+  }
+
+  checkout(){
+    let items = this.cartObjects.length
+
+    localStorage.setItem('items', items.toString())
+    localStorage.setItem('total', this.total.toString())
+    this.route.navigateByUrl('/checkout')
   }
 
 }
