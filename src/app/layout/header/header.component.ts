@@ -140,7 +140,7 @@ export class HeaderComponent implements OnInit {
   }
 
   getProducts(cat:string){
-    this.router.navigateByUrl(`/products/?cat=${cat}`);
+    this.router.navigateByUrl(`/products?cat=${cat}`);
   }
 
   //pop ups function

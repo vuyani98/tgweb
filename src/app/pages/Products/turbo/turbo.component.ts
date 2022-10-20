@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PagesService } from '../../pages.service';
 @Component({
   selector: 'app-turbo',
@@ -17,7 +18,7 @@ export class TurboComponent implements OnInit {
   }
   one_product_display: string = 'none'
 
-  constructor( private service: PagesService) { }
+  constructor( private service: PagesService, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -32,7 +33,7 @@ export class TurboComponent implements OnInit {
   }
 
   show_subCatergory(sub:string){
-    console.log('called')
+    document.getElementById('products')?.scrollIntoView()
     this.service.products_using_name(sub).subscribe(data => {
       let raw_products = data.data[0].attributes.products.data;
 
@@ -80,6 +81,20 @@ export class TurboComponent implements OnInit {
     let x = window.open("", "myWindow", "width=1,height=1");
     x?.localStorage.setItem('cart', cartlist);
     x?.close();
+    alert(`${product.product_code} added to cart`)
   }
+
+  checkout(){
+    let cart = localStorage.getItem('cart');
+
+    if (cart == ''){
+      alert('Cart is empty')
+    }
+
+    else{
+      this.router.navigateByUrl('/cart');
+    }
+  }
+
 
 }

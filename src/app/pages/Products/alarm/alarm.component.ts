@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PagesService } from '../../pages.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-alarm',
@@ -19,7 +20,7 @@ export class AlarmComponent implements OnInit {
   }
   one_product_display: string = 'none'
 
-  constructor(private service: PagesService) { }
+  constructor(private service: PagesService, private router: Router) { }
 
   ngOnInit(): void {
     this.service.catergories_using_contains('ax%pro').subscribe(data => {
@@ -38,13 +39,14 @@ export class AlarmComponent implements OnInit {
   }
 
   show_subCatergory(sub:string){
+    document.getElementById('products')?.scrollIntoView()
     this.service.catergories_using_contains(sub).subscribe(data => {
       console.log(data)
       this.products = []
       let raw_products = data.data[0].attributes.products.data;
 
       for(let i=0; i<raw_products.length;i++){
-        this.products[i] = raw_products[i].attributes
+        this.products[i] = raw_products[i]
         this.products[i]['id'] = raw_products[i].id
       }
 
@@ -87,6 +89,19 @@ export class AlarmComponent implements OnInit {
     let x = window.open("", "myWindow", "width=1,height=1");
     x?.localStorage.setItem('cart', cartlist);
     x?.close();
+    alert(`${product.product_code} added to cart`)
+  }
+
+  checkout(){
+    let cart = localStorage.getItem('cart');
+
+    if (cart == ''){
+      alert('Cart is empty')
+    }
+
+    else{
+      this.router.navigateByUrl('/cart');
+    }
   }
 
 }

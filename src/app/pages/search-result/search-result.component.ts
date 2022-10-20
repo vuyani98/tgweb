@@ -71,6 +71,19 @@ export class SearchResultComponent implements OnInit {
     let x = window.open("", "myWindow", "width=1,height=1");
     x?.localStorage.setItem('cart', cartlist);
     x?.close();
+    alert(`${product.product_code} added to cart`)
+  }
+
+  checkout(){
+    let cart = localStorage.getItem('cart');
+
+    if (cart == ''){
+      alert('Cart is empty')
+    }
+
+    else{
+      this.router.navigateByUrl('/cart');
+    }
   }
 
 }

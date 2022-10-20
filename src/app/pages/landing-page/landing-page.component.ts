@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { PagesService } from '../pages.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { NgxSpinnerService } from "ngx-spinner";
 import { CarouselComponent } from 'angular-responsive-carousel';
 import { localizedString } from '@angular/compiler/src/output/output_ast';
 
@@ -29,7 +30,7 @@ export class LandingPageComponent implements OnInit {
   one_product_display: string = 'none'
 
 
-  constructor(private service: PagesService, private router: Router, private sanitizer: DomSanitizer) { }
+  constructor(private service: PagesService, private router: Router, private sanitizer: DomSanitizer, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
     this.getcolorVu();
@@ -117,7 +118,7 @@ export class LandingPageComponent implements OnInit {
     this.one_product_display = 'none'
   }
 
-  addtocart(product:any){
+  async addtocart(product:any){
     let cartlist = localStorage.getItem('cart');
     let newItem = JSON.stringify(product);
 
@@ -129,8 +130,20 @@ export class LandingPageComponent implements OnInit {
     }
     let x = window.open("", "myWindow", "width=1,height=1");
     x?.localStorage.setItem('cart', cartlist);
-    x?.close();
+    await x?.close();
+    alert(`${product.product_code} added to cart`)
   }
 
+  checkout(){
+    let cart = localStorage.getItem('cart');
+
+    if (cart == ''){
+      alert('Cart is empty')
+    }
+
+    else{
+      this.router.navigateByUrl('/cart');
+    }
+  }
 
 }

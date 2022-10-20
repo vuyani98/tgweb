@@ -26,7 +26,7 @@
     </div>
   </div>
 
-  <div class="products">
+  <div class="products" id="products">
     <h3>Alarm Products</h3>
 
     <div class="products-container">
@@ -67,7 +67,7 @@
       <h5 style="margin-top:50px">{{one_product.price}}</h5>
       <div class="buttons">
         <button (click)="addtocart(one_product)" class="add-to-cart">Add to cart</button>
-        <a routerLink="/cart"><button class="checkout">Checkout</button></a>
+        <button (click)="checkout()" class="checkout">Checkout</button>
       </div>
     </div>
   </div>
