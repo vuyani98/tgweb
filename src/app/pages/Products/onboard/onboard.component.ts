@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PagesService } from '../../pages.service';
 
 @Component({
@@ -19,7 +20,7 @@ export class OnboardComponent implements OnInit {
   };
   one_product_display: string = 'none';
 
-  constructor( private service: PagesService) { }
+  constructor( private service: PagesService, private router: Router) { }
 
   ngOnInit(): void {
     this.service.products_using_name('Dashcam').subscribe(data => {
@@ -69,5 +70,18 @@ export class OnboardComponent implements OnInit {
     let x = window.open("", "myWindow", "width=1,height=1");
     x?.localStorage.setItem('cart', cartlist);
     x?.close();
+    alert(`${product.product_code} added to cart`)
+  }
+
+  checkout(){
+    let cart = localStorage.getItem('cart');
+
+    if (cart == ''){
+      alert('Cart is empty')
+    }
+
+    else{
+      this.router.navigateByUrl('/cart');
+    }
   }
 }

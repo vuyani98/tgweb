@@ -1,3 +1,4 @@
+
 <div class="hero-container">
 
   <div class="hero">
@@ -25,16 +26,15 @@
 
   <div class="recommended">
     <h4>Popular Products</h4>
-    <carousel [autoplay]="true" [cellsToShow]="1" [cellWidth]="200" [height]="350" style="margin-top: 30px;">
+    <carousel [autoplay]="true" [cellsToShow]="1" [pauseOnHover]="true" [cellWidth]="200" [height]="350" style="margin-top: 30px;">
       <div class="carousel-cell products" *ngFor="let product of products">
-        <div class="product" >
+        <div class="product">
           <div style="height: 150px;">
             <img src="{{product.image_url}}" alt="" width=150px  height=100px style="margin-bottom:10px;">
           </div>
 
           <h6 style="font-size: smaller;">{{product.product_code}}</h6>
-            <h6 class="price" (click)="show_one(product.id)">{{product.retail_price}}</h6>
-            <a (click)="show_one(product.id)" ><button [disabled]="false">add to cart</button></a>
+            <h6 class="price" >{{product.retail_price}}</h6>
         </div>
       </div>
   </carousel>
@@ -190,7 +190,7 @@
       <h5 style="margin-top:50px">{{one_product.price}}</h5>
       <div class="buttons">
         <button class="add-to-cart" (click)="addtocart(one_product)">Add to cart</button>
-        <a routerLink="/cart"><button class="checkout">Checkout</button></a>
+        <button (click)="checkout()" class="checkout">Checkout</button>
       </div>
     </div>
   </div>

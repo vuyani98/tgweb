@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { NgxSpinnerService } from "ngx-spinner";
 import * as globals from '../assets/globals';
 @Component({
   selector: 'app-root',
@@ -12,7 +13,7 @@ export class AppComponent implements OnInit{
   cartlist:  string = ''
 
 
-  constructor(private router: Router, private actRoute: ActivatedRoute){
+  constructor(private router: Router, private actRoute: ActivatedRoute, private spinner: NgxSpinnerService){
     this.router.events.subscribe(event => {
 
       if(this.router.url == "/cart"){
@@ -34,12 +35,14 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    this.spinner.show();
+
+    window.onload = () => {this.spinner.hide()}
       let cart = localStorage.getItem('cart')
 
       if (!cart){
         localStorage.setItem('cart', this.cartlist)
       }
   }
-
 
 }

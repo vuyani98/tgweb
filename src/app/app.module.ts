@@ -1,10 +1,11 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {CloudinaryModule} from '@cloudinary/ng';
 import { AppComponent } from './app.component';
+import { NgxSpinnerModule } from "ngx-spinner";
 import { FooterComponent } from './layout/footer/footer.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { LazyimgDirective } from './lazyimg.directive';
@@ -30,8 +31,10 @@ import { CheckoutComponent } from './checkout/checkout.component';
     ReactiveFormsModule,
     CloudinaryModule,
     BrowserAnimationsModule,
-    IvyCarouselModule
+    IvyCarouselModule,
+    NgxSpinnerModule,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [CloudinaryModule],
   bootstrap: [AppComponent]
 })

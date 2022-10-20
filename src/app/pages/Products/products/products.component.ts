@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { HostListener, Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute} from '@angular/router';
 import { PagesService } from '../../pages.service';
 
@@ -19,11 +20,17 @@ export class ProductsComponent implements OnInit {
      description:'',
      supplier_code: ''
    }
-   one_product_display: string = 'none'
+   one_product_display: string = 'none';
+
+
 
   constructor(private router: Router, private actRoute: ActivatedRoute, private service : PagesService) { }
 
   ngOnInit(): void {
+    console.log('on it')
+    this.router.events.subscribe(evnt => {
+      this.products= []
+    })
     this.actRoute.queryParams.subscribe(params => {
       this.header = params['cat'];
 
@@ -40,6 +47,14 @@ export class ProductsComponent implements OnInit {
         this.get_products()
       }
 
+    })
+  }
+
+  @HostListener('window:beforeunload')
+  onrefresh(){
+    console.log('RELOAD')
+    window.addEventListener('load', () => {
+      console.log('after unload')
     })
   }
 
@@ -113,6 +128,19 @@ export class ProductsComponent implements OnInit {
     let x = window.open("", "myWindow", "width=1,height=1");
     x?.localStorage.setItem('cart', cartlist);
     x?.close();
+    alert(`${product.product_code} added to cart`)
+  }
+
+  checkout(){
+    let cart = localStorage.getItem('cart');
+
+    if (cart == ''){
+      alert('Cart is empty')
+    }
+
+    else{
+      this.router.navigateByUrl('/cart');
+    }
   }
 
 }

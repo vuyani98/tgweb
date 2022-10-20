@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-
+import { NgxSpinnerModule } from "ngx-spinner";
 import { PagesRoutingModule } from './pages-routing.module';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { NetworkComponent } from './Products/network/network.component';
@@ -40,11 +40,13 @@ import {IvyCarouselModule} from 'angular-responsive-carousel';
     AxproComponent,
     SearchResultComponent,
     PageNotFoundComponent,
+
   ],
   imports: [
     CommonModule,
     PagesRoutingModule,
-    IvyCarouselModule
+    IvyCarouselModule,
+    NgxSpinnerModule,
   ]
 })
 export class PagesModule { }

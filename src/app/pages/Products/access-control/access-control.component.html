@@ -1,5 +1,5 @@
-<div class="container">
 
+<div class="container">
   <h2 class="catergory-heading">Access Control Catergories</h2>
   <br>
   <div class="catergories">
@@ -18,7 +18,7 @@
        <h6>Face Recognition Terminal</h6>
     </div>
 
-    <div class="col-lg-3 col-md-3 col-12 catergory-container" (click)="show_subCatergory('card%terminal')">
+    <div class="col-lg-3 col-md-3 col-12 catergory-container" (click)="show_subCatergory('card%reader')" href="#products">
       <div class="img-container">
         <img src="../../../../assets/images/hikcard.png" alt="">
       </div>
@@ -47,7 +47,7 @@
     </div>
   </div>
 
-  <div class="products">
+  <div class="products" id="products">
     <h3>Access Control Products</h3>
 
     <div class="products-container">
@@ -88,7 +88,7 @@
       <h5 style="margin-top:50px">{{one_product.price}}</h5>
       <div class="buttons">
         <button (click)="addtocart(one_product)" class="add-to-cart">Add to cart</button>
-        <a routerLink="/cart"><button class="checkout">Checkout</button></a>
+        <button (click)="checkout()" class="checkout">Checkout</button>
       </div>
     </div>
   </div>

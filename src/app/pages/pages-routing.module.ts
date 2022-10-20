@@ -26,7 +26,7 @@ const routes: Routes = [
   { path: 'Alarm', component: AlarmComponent},
   { path: 'Accessories', component: AccessoriesComponent},
   { path: 'Software', component: SoftwareComponent},
-  { path: 'products/', component: ProductsComponent},
+  { path: 'products', component: ProductsComponent},
   { path: 'search', component: SearchResultComponent},
   { path: '**', component: PageNotFoundComponent}
 
