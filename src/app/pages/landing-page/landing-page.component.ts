@@ -46,7 +46,7 @@ export class LandingPageComponent implements OnInit {
   }
 
   get_all_products(){
-    this.router.navigateByUrl('products/?cat=all')
+    this.router.navigateByUrl('products?cat=all')
   }
 
   showVid(tech:string){
@@ -64,7 +64,6 @@ export class LandingPageComponent implements OnInit {
     }
 
     this.displayVid = 'block'
-    console.log(this.vidLink)
 
   }
 
@@ -82,13 +81,13 @@ export class LandingPageComponent implements OnInit {
       this.colorProducts[1] = raw_products[4].attributes;
       this.colorProducts[1]['id'] = raw_products[4].id;
 
-      this.colorProducts[2] = raw_products[8].attributes;
-      this.colorProducts[2]['id'] = raw_products[8].id;
+      this.colorProducts[2] = raw_products[7].attributes;
+      this.colorProducts[2]['id'] = raw_products[7].id;
     })
   }
 
   getProducts(cat:string){
-    this.router.navigateByUrl(`/products/?cat=${cat}`);
+    this.router.navigateByUrl(`/products?cat=${cat}`);
   }
 
   show_one(id:number){
@@ -96,7 +95,6 @@ export class LandingPageComponent implements OnInit {
     for (let i=0; i<this.colorProducts.length; i++){
 
       if(id==this.colorProducts[i].id){
-        console.log(`${this.colorProducts[i]['product_code']}`)
         this.one_product['image_url'] = this.colorProducts[i]['image_url'];
         this.one_product['description'] = this.colorProducts[i]['description'];
         this.one_product['product_code'] = this.colorProducts[i]['product_code'];

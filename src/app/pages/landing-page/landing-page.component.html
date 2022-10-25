@@ -3,7 +3,7 @@
 
   <div class="hero">
 
-    <div class="slide slide1">
+    <div class="slide slide1" >
       <div class="content">
         <div class="sub-heading">
           <img src="../../../assets/images/hiklogo.png" alt="" width="50%" height="auto" style="max-width: 200px; margin-bottom:20px">
@@ -19,6 +19,24 @@
 
     </div>
 
+    <div class="slide slide2" style="display: none;background:linear-gradient(90deg, #43005e46,  #000023ff)">
+      <div class="left" style="background: url('../../../assets/images/street.jpg');">
+        <div>
+          <div class="hero-header">
+            Providing world <br> class security <br> systems
+          </div>
+          <div class="hero-button">
+            <button (click)="get_all_products()">SHOP OUR PRODUCTS</button>
+            <a href="https://www.instagram.com/tg__security/"><button>SEE OUR WORK</button></a>
+          </div>
+        </div>
+      </div>
+      <div class="right">
+        <div>
+          <img src="../../../assets/images/street.png" alt="">
+        </div>
+      </div>
+    </div>
   </div>
 
 </div>
@@ -26,7 +44,7 @@
 
   <div class="recommended">
     <h4>Popular Products</h4>
-    <carousel [autoplay]="true" [cellsToShow]="1" [pauseOnHover]="true" [cellWidth]="200" [height]="350" style="margin-top: 30px;">
+    <carousel [autoplay]="true" [cellsToShow]="1" [pauseOnHover]="true" [cellWidth]="200" [height]="350" style="margin-top: 30px;z-index: 0 !important;">
       <div class="carousel-cell products" *ngFor="let product of products">
         <div class="product">
           <div style="height: 150px;">
