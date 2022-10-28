@@ -3,7 +3,7 @@
 
   <div class="hero">
 
-    <div class="slide slide1" >
+    <div class="slide slide1" style="display:block">
       <div class="content">
         <div class="sub-heading">
           <img src="../../../assets/images/hiklogo.png" alt="" width="50%" height="auto" style="max-width: 200px; margin-bottom:20px">
@@ -19,24 +19,45 @@
 
     </div>
 
-    <div class="slide slide2" style="display: none;background:linear-gradient(90deg, #43005e46,  #000023ff)">
-      <div class="left" style="background: url('../../../assets/images/street.jpg');">
-        <div>
-          <div class="hero-header">
-            Providing world <br> class security <br> systems
-          </div>
-          <div class="hero-button">
-            <button (click)="get_all_products()">SHOP OUR PRODUCTS</button>
-            <a href="https://www.instagram.com/tg__security/"><button>SEE OUR WORK</button></a>
+    <div class="slide slide2" style="display: none;padding: 0px;">
+      <div style="display: flex; justify-content: space-between;">
+        <div class="left col-7" style=" font-family: 'Montserrat'; background: linear-gradient(90deg, #071b544d, #040e28),url('../../../assets/images/street.jpg'); background-size: cover; display: flex; align-items: center; justify-content: center;">
+          <div>
+            <div class="sub-heading">
+              <img src="../../../assets/images/hiklogo.png" alt="" width="50%" height="auto" style="max-width: 200px; margin-bottom:20px">
+            </div>
+            <div class="hero-header" style="font-size: 50px; font-weight:bold">
+              Tailor-made solutions<br> for desired<br> security
+            </div>
+            <div class="hero-button" style="margin-top: 30px; font-family: 'Poppins'">
+              <a href="https://www.instagram.com/tg__security/"><button style=" width: 150px; padding: 7px; background: none; border: 2px solid white; color: white; font-weight: 500;">CALL NOW</button></a>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="right">
-        <div>
-          <img src="../../../assets/images/street.png" alt="">
+        <div class="right col-5" style="background:linear-gradient(90deg, #040e28, #000043);display: flex; align-items: center; justify-content: center; padding: 10px; height: 550px;">
+          <div>
+            <img src="../../../assets/images/street.png" alt="" height="350px">
+          </div>
         </div>
       </div>
     </div>
+
+
+    <div class="slide slide3" style="display: none; background:linear-gradient(90deg, #040e28, #071b54a6),url('../../../assets/images/showroom.jpg'); background-position: center;">
+      <div class="content">
+        <div class="sub-heading">
+          <img src="../../../assets/images/hiklogo.png" alt="" width="50%" height="auto" style="max-width: 200px; margin-bottom:20px">
+        </div>
+        <div class="hero-header">
+          Visit our showroom <br> and see how everything <br> works
+        </div>
+        <div class="hero-button">
+          <a href="https://www.instagram.com/tg__security/"><button>GET DIRECTIONS</button></a>
+        </div>
+      </div>
+
+    </div>
+
   </div>
 
 </div>
