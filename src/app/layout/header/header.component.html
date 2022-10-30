@@ -22,10 +22,14 @@
           </li>
           <li>
             <a >
-              PRODUCTS
-              <span (click)="mega_menu()">
-                 <img src="../../../../assets/images/icons8-sort-down-50.png" height="16px" style="margin-top: -4px;">
-              </span>
+              <div style="display: flex;">
+                PRODUCTS &nbsp;
+                <div [@rotate]="isOpen ? 'open' : 'closed' " (click)="mega_menu()" class="arrow">
+                  <img src="../../../../assets/images/icons8-sort-down-50.png" height="16px" style="margin-top: -4px;">
+                </div>
+              </div>
+
+
             </a>
           </li>
           <li>
@@ -51,7 +55,7 @@
 </div>
 
 
-<div id="mega-menu" [ngStyle]="{display : mega_menu_display}">
+<div id="mega-menu" [ngStyle]="{display : mega_menu_display}" style="opacity: 1; z-index: 3;">
 
   <h4 class="heading">Products</h4>
 
@@ -127,7 +131,7 @@
     </div>
 
     <div class="center col-4"  (click)="show_popup('products')">
-      <div class="icon"> <img src="../../../../assets/images/icons8-sort-down-50.png" height="25px" style="transform: rotate(180deg);"> </div>
+      <div class="icon" [@rotate]="isOpen ? 'open' : 'closed' "> <img src="../../../../assets/images/icons8-sort-down-50.png" height="25px" style="transform: rotate(180deg);"> </div>
       <div class="title">PRODUCTS</div>
     </div>
 

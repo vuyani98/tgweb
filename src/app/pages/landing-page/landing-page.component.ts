@@ -4,15 +4,67 @@ import { PagesService } from '../pages.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { NgxSpinnerService } from "ngx-spinner";
 import { CarouselComponent } from 'angular-responsive-carousel';
-import { localizedString } from '@angular/compiler/src/output/output_ast';
+import { trigger, state, style, animate, transition, keyframes, query } from '@angular/animations';
 
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
-  styleUrls: ['./landing-page.component.sass']
+  styleUrls: ['./landing-page.component.sass'],
+  animations: [
+                  trigger('Slide', [
+
+                    //...
+                    state('hidden', style({display : 'none'})),
+                    state('shown', style({display: 'block'})),
+
+                    transition('shown => hidden', [
+                        animate('1000ms ease-out', keyframes([
+                          style({ opacity: 1, offset: 0}),
+                          style({ opacity: 0.95, offset: 0.5}),
+                          style({ opacity: 0.9, offset: 1}),
+                        ])),
+
+                        query('.content', [
+                          animate('200ms 800ms ease-out', keyframes([
+                            style({ opacity: 0.6, offset: 0.1 }),
+                            style({ opacity: 0.4, offset: 0.6 }),
+                            style({ opacity: 0, offset: 1 }),
+                          ]))
+                        ], { optional: true}),
+
+                        query('.wheel', [
+                          animate('600ms 400ms ease-out', keyframes([
+                            style({ transform: 'rotate(0deg)', offset: 0}),
+                            style({ transform: 'rotate(10deg)', offset: 0.5}),
+                            style({ transform: 'rotate(20deg)', offset: 1})
+                          ]))
+                        ], { optional: true})
+                    ]),
+
+                    transition('hidden => shown', [
+                      animate('1000ms ease-in', keyframes([
+                        style({display: 'block', opacity: 0.8, offset: 0.1}),
+                        style({ opacity: 0.9, offset: 0.7}),
+                        style({ opacity: 1, offset: 1}),
+                      ])),
+
+                      query('.content',[
+                        animate('1000ms ease-in', keyframes([
+                          style({ display: 'block', opacity: 0.4, offset: 0.1}),
+                          style({ opacity: 0.7, offset: 0.6}),
+                          style({ opacity: 1, offset: 1}),
+                        ]))
+                      ]),
+                    ]),
+
+                  ]),
+  ]
 })
 export class LandingPageComponent implements OnInit {
 
+  slide1 = true;
+  slide2 = false;
+  slide3 = false;
   displayVid = 'None';
   vidLink:any;
   colorvu = 'https://www.youtube.com/embed/sn_DFZJCc7U';
@@ -33,6 +85,8 @@ export class LandingPageComponent implements OnInit {
   constructor(private service: PagesService, private router: Router, private sanitizer: DomSanitizer, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
+
+    setInterval( () => this.slideshow(), 4500)
     this.getcolorVu();
     this.service.products_using_name('Analogue/Turbo').subscribe(data => {
       let raw_products = data.data[0].attributes.products.data;
@@ -45,10 +99,38 @@ export class LandingPageComponent implements OnInit {
 
   }
 
+  //function
+  slideshow(){
+
+    if (this.slide1 == true){
+      this.slide2 = true;
+      this.slide1= false;
+      this.slide3 = false;
+
+    }
+
+    else if (this.slide2 == true){
+      this.slide3 = true;
+      this.slide1 = false;
+      this.slide2 = false
+    }
+
+    else {
+      this.slide1 = true;
+      this.slide2 = false;
+      this.slide3 = false
+
+    }
+
+
+  }
+
+  //function
   get_all_products(){
     this.router.navigateByUrl('products?cat=all')
   }
 
+  //function
   showVid(tech:string){
 
     if (tech == 'colorvu'){
@@ -67,10 +149,12 @@ export class LandingPageComponent implements OnInit {
 
   }
 
+  //function
   hideVid(){
     this.displayVid = 'None'
   }
 
+  //function
   getcolorVu(){
     this.service.products_using_name('ColorVu').subscribe(data => {
       let raw_products = data.data[0].attributes.products.data;
@@ -86,6 +170,7 @@ export class LandingPageComponent implements OnInit {
     })
   }
 
+  //function
   getProducts(cat:string){
     this.router.navigateByUrl(`/products?cat=${cat}`);
   }

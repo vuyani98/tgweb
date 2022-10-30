@@ -1,14 +1,39 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
+import { trigger, state, style, animate, transition, keyframes, query } from '@angular/animations';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.sass']
+  styleUrls: ['./header.component.sass'],
+  animations: [
+                  trigger('rotate', [
+
+                    state('open', style({ transform: 'rotate(-180deg)'})),
+                    state('closed', style({ transform: 'rotate(0deg)'})),
+
+                    transition('closed => open', [
+                      animate('500ms ease-out', keyframes([
+                        style({ transform: 'rotate(0deg)', offset: 0}),
+                        style({ transform: 'rotate(-90deg)', offset: 0.5}),
+                        style({ transform: 'rotate(-180deg)', offset: 1}),
+                      ]))
+                    ]),
+
+                    transition('open => closed', [
+                      animate('200ms ease-in', keyframes([
+                        style({ transform: 'rotate(-180deg)', offset: 0}),
+                        style({ transform: 'rotate(-90deg)', offset: 0.5}),
+                        style({ transform: 'rotate(0deg)', offset: 1}),
+                      ]))
+                    ]),
+                  ])
+  ]
 })
 export class HeaderComponent implements OnInit {
 
+  isOpen = false;
   mega_menu_display = "none";
   cart_display = "none";
   menu_display = "none";
@@ -111,10 +136,12 @@ export class HeaderComponent implements OnInit {
 
     if (this.mega_menu_display === "none"){
       this.mega_menu_display = "block";
+      this.isOpen = true
     }
 
     else{
       this.mega_menu_display = "none"
+      this.isOpen = false
     }
   }
 
@@ -165,6 +192,7 @@ export class HeaderComponent implements OnInit {
 
       if (this.menu_display == "block"){
         this.menu_display = "none"
+
       }
       else{
         this.menu_display = "block";
@@ -195,9 +223,11 @@ export class HeaderComponent implements OnInit {
 
       if (this.products_display == "block"){
         this.products_display = "none"
+        this.isOpen = false
       }
       else{
         this.products_display = "block";
+        this.isOpen = true
       }
 
       this.cart_display = "none";
