@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
@@ -13,7 +14,7 @@ export class SigninComponent implements OnInit,OnDestroy {
     password: ''
   })
 
-  constructor(private authService: AuthService, private formBuilder: FormBuilder) { }
+  constructor(private authService: AuthService, private formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
       localStorage.setItem('showMen', 'false')
@@ -29,6 +30,8 @@ export class SigninComponent implements OnInit,OnDestroy {
     })
 
     this.loginForm.reset();
+    this.router.navigateByUrl('/')
+
   }
 
 }

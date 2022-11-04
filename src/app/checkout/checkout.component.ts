@@ -56,7 +56,7 @@ export class CheckoutComponent implements OnInit {
     }
   }
 
-  purchase(){
+  submit(){
 
     let message1 = `Stay alert for a payment for a purchase of ${this.purchasedItems} costing ${this.total} by ${this.purchaseForm.get('name')?.value} to be delivered at ${this.purchaseForm.get('street')?.value}
                 ${this.purchaseForm.get('complex')?.value} ${this.purchaseForm.get('surburb')?.value} ${this.purchaseForm.get('city')?.value}
