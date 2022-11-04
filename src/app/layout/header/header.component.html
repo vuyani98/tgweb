@@ -150,9 +150,11 @@
 
 <div [@cross]="isMobileOpen ? 'crossed' : 'straight'" class="menu-popup" [ngStyle]="{display : menu_display}" style="z-index: 3;">
   <ul class="menu-items">
+
+    <li> <a routerLink="/" style="color: white; text-decoration: none; ">HOME</a> </li>
     <li (click)="getProducts('all')">SHOP ALL PRODUCTS</li>
     <li> <a routerLink="/cart" style="color: white; text-decoration: none; ">CHECKOUT</a> </li>
-    <li> <a href="https://wa.me/+27682582801" style="color: white; text-decoration: none;">INSTALLATIONS</a> </li>
+    <li> <a href="https://www.instagram.com/tg__security/" style="color: white; text-decoration: none;">INSTALLATIONS</a> </li>
   </ul>
   <hr style=" opacity: 0.5 !important; background-color: #13234E; width: 70%; margin-right: auto; margin-left: auto;">
   <ul>
