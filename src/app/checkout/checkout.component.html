@@ -11,33 +11,33 @@
 
     <div *ngIf="deliver" class="left form col-xs-12 col-sm-12 col-md-6 col-lg-6 col-12">
       <h6 class="form-header">Add Address</h6>
-      <form [formGroup]="purchaseForm" (ngSubmit)="purchase()">
+      <form #purchase="ngForm" [formGroup]="purchaseForm" (ngSubmit)="submit()">
         <div class="input">
-          <input type="text" id="name" formControlName="name" placeholder="Receipient Name">
+          <input type="text" id="name" formControlName="name" placeholder="Receipient Name" required minlength="3">
         </div>
         <div class="input">
-          <input type="text" id="email" formControlName="email" placeholder="Receipient Email">
+          <input type="text" id="email" formControlName="email" placeholder="Receipient Email" required minlength="3">
         </div>
         <div class="input">
-          <input type="text" id="street" formControlName="street" placeholder="Street Address">
+          <input type="text" id="street" formControlName="street" placeholder="Street Address" required minlength="3">
         </div>
         <div class="input">
-          <input type="text" id="complex" formControlName="complex" placeholder="Complex / Building">
+          <input type="text" id="complex" formControlName="complex" placeholder="Complex / Building" required minlength="3">
         </div>
         <div class="input">
-          <input type="text" id="surburb" formControlName="surburb" placeholder="Suburb">
+          <input type="text" id="surburb" formControlName="surburb" placeholder="Suburb" required minlength="3">
         </div>
         <div class="input">
-          <input type="text" id="city" formControlName="city" placeholder="City / Town">
+          <input type="text" id="city" formControlName="city" placeholder="City / Town" required minlength="3">
         </div>
         <div class="input">
-          <input type="text" id="province" formControlName="province" placeholder="Province">
+          <input type="text" id="province" formControlName="province" placeholder="Province" required minlength="3">
         </div>
         <div class="input">
-          <input type="number" id="postalCode" formControlName="postalCode" placeholder="Postal Code">
+          <input type="number" id="postalCode" formControlName="postalCode" placeholder="Postal Code" required minlength="3">
         </div>
         <div class="input-btn" *ngIf="purchasedItems.length">
-          <button type="submit">Save Address</button>
+          <button type="submit" style="margin-top: 10px; border: none;" [disabled]="purchase.form.invalid">Save Address</button>
         </div>
       </form>
     </div>

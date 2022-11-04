@@ -10,26 +10,26 @@
 
     <div id="right" class="col-xs-12 col-md-6 col-lg-6">
       <h3>Sign Up</h3>
-      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <form  #signup="ngForm" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
         <div class="input-container">
           <p>Email Address</p>
-          <input id="email" type="text" formControlName="email" >
+          <input id="email" type="text" formControlName="email" required>
         </div>
 
         <div class="input-container">
           <p>Username</p>
-          <input id="username" type="text" formControlName="username" >
+          <input id="username" type="text" formControlName="username" required>
         </div>
 
         <div class="input-container">
           <p>Password</p>
-          <input type="password">
+          <input type="password" required>
         </div>
 
         <div class="input-container">
           <p>Confirm Password</p>
-          <input id="password" type="password" formControlName="password">
+          <input id="password" type="password" formControlName="password" required>
         </div>
 
         <div style="margin-top:20px;">
@@ -40,7 +40,7 @@
         </div>
 
         <div class="input-btn">
-          <button type="submit">Sign Up</button> <a routerLink="/auth/login">Already have an account ?</a>
+          <button type="submit" [disabled]="signup.form.invalid">Sign Up</button> <a routerLink="/auth/login" >Already have an account ?</a>
         </div>
 
       </form>
