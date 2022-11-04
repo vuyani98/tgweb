@@ -63,12 +63,12 @@ export class CartComponent implements OnInit {
     this.total = 0;
     for (let i=0; i<this.cartObjects.length; i++){
       let price = this.cartObjects[i].price
-      price = price.slice(2)
+      price = price.slice(1)
       price = Number(price.replace(/[^0-9.-]+/g,""));
       //console.log(price)
       //console.log(parseFloat(price))
       this.total += price
-      this.total = +this.total.toFixed(2)
+      //this.total = +this.total.toFixed(2)
     }
   }
 

@@ -5,6 +5,10 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { NgxSpinnerService } from "ngx-spinner";
 import { CarouselComponent } from 'angular-responsive-carousel';
 import { trigger, state, style, animate, transition, keyframes, query } from '@angular/animations';
+import { HttpClient } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+import { GoogleMap } from '@angular/google-maps';
 
 @Component({
   selector: 'app-landing-page',
@@ -35,8 +39,8 @@ import { trigger, state, style, animate, transition, keyframes, query } from '@a
                         query('.wheel', [
                           animate('600ms 400ms ease-out', keyframes([
                             style({ transform: 'rotate(0deg)', offset: 0}),
-                            style({ transform: 'rotate(10deg)', offset: 0.5}),
-                            style({ transform: 'rotate(20deg)', offset: 1})
+                            style({ transform: 'rotate(15deg)', offset: 0.5}),
+                            style({ transform: 'rotate(30deg)', offset: 1})
                           ]))
                         ], { optional: true})
                     ]),
@@ -67,6 +71,8 @@ export class LandingPageComponent implements OnInit {
   slide3 = false;
   displayVid = 'None';
   vidLink:any;
+  lat = '-26.137823581467845';
+  long = '28.25777963406091'
   colorvu = 'https://www.youtube.com/embed/sn_DFZJCc7U';
   acusense = 'https://www.youtube.com/embed/7nbch_TQEA0';
   axpro = 'https://www.youtube.com/embed/OeGQDqtzrz8';
@@ -79,10 +85,21 @@ export class LandingPageComponent implements OnInit {
     supplier_code: ''
   };
   products: any[] = [];
-  one_product_display: string = 'none'
+  one_product_display: string = 'none';
+  apiLoaded: Observable<boolean>;
+  options: google.maps.MapOptions = {
+    center: {lat: -26.137823581467845, lng: 28.25777963406091},
+    zoom: 4
+  };
 
-
-  constructor(private service: PagesService, private router: Router, private sanitizer: DomSanitizer, private spinner: NgxSpinnerService) { }
+  constructor(private httpClient : HttpClient ,private service: PagesService, private router: Router, private sanitizer: DomSanitizer, private spinner: NgxSpinnerService) {
+    console.log('calling api')
+    this.apiLoaded = this.httpClient.jsonp('https://maps.googleapis.com/maps/api/js?key=AIzaSyAyVnWI_YYyNKOgU9Wt2_WCW6GoJjNqfT0', 'callback')
+    .pipe(
+      map(() => true),
+      catchError(() => of(false)),
+    );
+  }
 
   ngOnInit(): void {
 
@@ -190,11 +207,7 @@ export class LandingPageComponent implements OnInit {
 
         break;
       }
-
     }
-
-
-
   }
 
   close_prod(){
@@ -227,6 +240,11 @@ export class LandingPageComponent implements OnInit {
     else{
       this.router.navigateByUrl('/cart');
     }
+  }
+
+  //function
+  directions(){
+    document.getElementById('googleMap')?.scrollIntoView();
   }
 
 }

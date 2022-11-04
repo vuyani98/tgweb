@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { PagesRoutingModule } from './pages-routing.module';
+import { GoogleMapsModule } from '@angular/google-maps';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { NetworkComponent } from './Products/network/network.component';
 import { TurboComponent } from './Products/turbo/turbo.component';
@@ -20,6 +21,7 @@ import { AxproComponent } from './axpro/axpro.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import {IvyCarouselModule} from 'angular-responsive-carousel';
+import { PoliciesComponent } from './policies/policies.component';
 
 
 @NgModule({
@@ -40,6 +42,7 @@ import {IvyCarouselModule} from 'angular-responsive-carousel';
     AxproComponent,
     SearchResultComponent,
     PageNotFoundComponent,
+    PoliciesComponent,
 
   ],
   imports: [
@@ -47,6 +50,7 @@ import {IvyCarouselModule} from 'angular-responsive-carousel';
     PagesRoutingModule,
     IvyCarouselModule,
     NgxSpinnerModule,
+    GoogleMapsModule
   ]
 })
 export class PagesModule { }

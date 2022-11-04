@@ -2,7 +2,7 @@
 <div class="container">
   <h3>Cart</h3>
   <div style="margin-top: 70px;" *ngFor="let product of cartObjects; index as i ">
-    <div class="product" style="display: flex;">
+    <div class="product" style="display: flex; flex-wrap: wrap;">
       <div class="left" style="height: 100px;">
         <img src="{{product.image_url}}" alt="" height="100%" width="auto">
       </div>

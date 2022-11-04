@@ -1,13 +1,14 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
-import { trigger, state, style, animate, transition, keyframes, query } from '@angular/animations';
+import { trigger, state, style, animate, transition, keyframes, query, stagger, group } from '@angular/animations';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.sass'],
   animations: [
+                  // arrow rotation animation
                   trigger('rotate', [
 
                     state('open', style({ transform: 'rotate(-180deg)'})),
@@ -18,7 +19,8 @@ import { trigger, state, style, animate, transition, keyframes, query } from '@a
                         style({ transform: 'rotate(0deg)', offset: 0}),
                         style({ transform: 'rotate(-90deg)', offset: 0.5}),
                         style({ transform: 'rotate(-180deg)', offset: 1}),
-                      ]))
+                      ])),
+
                     ]),
 
                     transition('open => closed', [
@@ -28,12 +30,126 @@ import { trigger, state, style, animate, transition, keyframes, query } from '@a
                         style({ transform: 'rotate(0deg)', offset: 1}),
                       ]))
                     ]),
+
+
+                  ]),
+
+                  //animating mega menu items
+                  trigger('slideDown', [
+
+                    //..
+                    state('open', style({ display : 'block'})),
+                    state('closed', style({ display : 'none'})),
+
+                    transition('closed => open', [
+                      style({ display : 'block'}),
+                      query('.item', [
+                        style({ opacity : 0}),
+                        animate('500ms ease-out', keyframes([
+                          style({ transform : 'translateY(-15px)', opacity : 0, offset: 0 }),
+                          style({ transform : 'translateY(-7px)', opacity : 0.5, offset: 0.5 }),
+                          style({ transform : 'translateY(0px)', opacity : 1 , offset: 1 }),
+                        ])),
+                      ], ({ optional : true })),
+                    ]),
+
+                    transition('open => closed', [
+                      style({ display : 'block'}),
+                      query('.item', [
+                        animate('500ms ease-in', keyframes([
+                          style({ transform : 'translateY(0px)', opacity : 1, offset: 0 }),
+                          style({ transform : 'translateY(-7px)', opacity : 0.5, offset: 0.5 }),
+                          style({ transform : 'translateY(-15px)', opacity : 0, offset: 1 }),
+                        ])),
+                      ], ({ optional : true })),
+                    ]),
+
+                  ]),
+
+                  //animating mobile burger menu
+
+                  trigger('cross', [
+
+                    transition('straight => crossed', [
+
+                      group([
+                        query('#center-line', [
+
+                          animate('400ms ease-out', keyframes([
+                            style({ opacity : 1, offset: 0}),
+                            style({ opacity : 0, offset: 1}),
+                          ]))
+
+                        ], { optional : true }),
+
+                        query('#top-line', [
+                          animate('400ms ease-out', keyframes([
+                            style({ transform: 'translateY(0px)', offset: 0}),
+                            style({ transform: 'translateY(7px)', offset: 0.5}),
+                            style({ transform: 'translate(0px, 7px) rotate(-45deg)', offset: 1})
+                          ]))
+                        ], { optional : true }),
+
+                        query('#bottom-line', [
+                          animate('400ms ease-out', keyframes([
+                            style({ transform: 'translateY(0px)', offset: 0}),
+                            style({ transform: 'translateY(-7px)', offset: 0.5}),
+                            style({ transform: 'translate(0px, -7px) rotate(45deg)', offset: 1})
+                          ]))
+                        ], { optional : true }),
+
+                        query('.menu-items', [
+                          style({ opacity : 0}),
+                          animate('400ms ease-out', keyframes([
+                            style({ transform : 'translateY(-15px)', opacity : 0, offset: 0 }),
+                            style({ transform : 'translateY(-7px)', opacity : 0.5, offset: 0.5 }),
+                            style({ transform : 'translateY(0px)', opacity : 1 , offset: 1 }),
+                          ])),
+                        ], ({ optional : true })),
+                      ])
+
+                    ]),
+
+                    transition('crossed => straight', [
+
+                      group([
+                        query('#center-line', [
+                          animate('400ms ease-out', keyframes([
+                            style({ opacity : 0, offset: 0}),
+                            style({ opacity : 1, offset: 1}),
+                          ]))
+                        ], { optional : true }),
+
+                        query('#top-line', [
+                          animate('400ms ease-out', keyframes([
+                            style({ transform: 'translateY(7px)', offset: 0}),
+                            style({ transform: 'rotate(0deg)', offset: 0.5}),
+                            style({ transform: 'translate(0px, 0px) rotate(0deg)', offset: 1})
+                          ]))
+                        ], { optional : true }),
+
+                        query('#bottom-line', [
+                          animate('400ms ease-out', keyframes([
+                            style({ transform: 'translateY(-7px)', offset: 0}),
+                            style({ transform: 'rotate(0deg)', offset: 0.5}),
+                            style({ transform: 'translate(0px, 0px) rotate(0deg)', offset: 1})
+                          ]))
+                        ], { optional : true }),
+                      ])
+
+                    ]),
+
                   ])
+
   ]
 })
 export class HeaderComponent implements OnInit {
 
+  top_line_style = "translate(0px, 0px) rotate(0deg)";
+  center_line_style = 1;
+  bottom_line_style = "translate(0px, 0px) rotate(0deg)";
   isOpen = false;
+  isMobileOpen = false;
   mega_menu_display = "none";
   cart_display = "none";
   menu_display = "none";
@@ -45,6 +161,7 @@ export class HeaderComponent implements OnInit {
   mobile_menu_display = 'none'
   display_cart = 'none';
   cartLength = 0;
+
 
   catergories = {
     "Network" : {
@@ -101,6 +218,12 @@ export class HeaderComponent implements OnInit {
 
     this.router.events.subscribe((val) => {
 
+      this.isOpen = false;
+      this.isMobileOpen = false;
+      this.top_line_style = "translate(0px, 0px) rotate(0deg)";
+      this.center_line_style = 1;
+      this.bottom_line_style = "translate(0px, 0px) rotate(0deg)";
+
       if( this.mega_menu_display != "none"){
         this.mega_menu_display = "none";
       }
@@ -117,8 +240,14 @@ export class HeaderComponent implements OnInit {
         this.mobile_sub_display = "none";
       }
 
+      if (this.menu_display != "none"){
+        this.menu_display = "none"
+      }
+
     })
   }
+
+  //function
   storageListener(){
     console.log('changes')
     let cart = localStorage.getItem('cart');
@@ -156,6 +285,7 @@ export class HeaderComponent implements OnInit {
     this.products = products
   }
 
+  // search function
   search(){
     this.router.navigateByUrl(`search?q=${this.searchForm.value.term}`)
     this.searchForm.reset()
@@ -166,6 +296,7 @@ export class HeaderComponent implements OnInit {
     this.router.navigateByUrl('/')
   }
 
+  // function
   getProducts(cat:string){
     this.router.navigateByUrl(`/products?cat=${cat}`);
   }
@@ -192,10 +323,18 @@ export class HeaderComponent implements OnInit {
 
       if (this.menu_display == "block"){
         this.menu_display = "none"
-
+        this.isMobileOpen = false;
+        this.top_line_style = "translate(0px, 0px) rotate(0deg)";
+        this.center_line_style = 1;
+        this.bottom_line_style = "translate(0px, 0px) rotate(0deg)";
       }
+
       else{
         this.menu_display = "block";
+        this.isMobileOpen = true;
+        this.top_line_style = "translate(0px, 7px) rotate(-45deg)";
+        this.center_line_style = 0;
+        this.bottom_line_style = "translate(0px, -7px) rotate(45deg)";
       }
 
       this.cart_display = "none";
@@ -264,6 +403,7 @@ export class HeaderComponent implements OnInit {
 
   }
 
+  // function
   mobile_prod(products ? : any){
 
     if ( products){

@@ -13,6 +13,7 @@ import { SoftwareComponent } from './Products/software/software.component';
 import { ProductsComponent } from './Products/products/products.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PoliciesComponent } from './policies/policies.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'Software', component: SoftwareComponent},
   { path: 'products', component: ProductsComponent},
   { path: 'search', component: SearchResultComponent},
+  { path: 'policies', component: PoliciesComponent},
   { path: '**', component: PageNotFoundComponent}
 
 ];
