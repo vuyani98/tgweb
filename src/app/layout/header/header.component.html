@@ -1,4 +1,4 @@
-<div id="nav-container" style="margin: 0; background: linear-gradient(45deg, #040e28, #071c54)">
+<div id="nav-container" style="margin: 0; background: linear-gradient(45deg, #040e28, #071c54);">
   <div id="header">
 
     <div class="left">
@@ -10,7 +10,7 @@
     <div class="right">
 
       <div id="phone-number">
-        <a>+27 101 402 628</a>
+        <a href="tel:+27 101 402 628" style="color: white; text-decoration: none; ">+27 101 402 628</a>
       </div>
 
 
@@ -22,10 +22,14 @@
           </li>
           <li>
             <a >
-              PRODUCTS
-              <span (click)="mega_menu()">
-                 <img src="../../../../assets/images/icons8-sort-down-50.png" height="16px" style="margin-top: -4px;">
-              </span>
+              <div style="display: flex;">
+                PRODUCTS &nbsp;
+                <div [@rotate]="isOpen ? 'open' : 'closed' " (click)="mega_menu()" class="arrow">
+                  <img src="../../../../assets/images/icons8-sort-down-50.png" height="16px" style="margin-top: -4px;">
+                </div>
+              </div>
+
+
             </a>
           </li>
           <li>
@@ -51,12 +55,12 @@
 </div>
 
 
-<div id="mega-menu" [ngStyle]="{display : mega_menu_display}">
+<div  id="mega-menu" class="mega-menu" [ngStyle]="{display : mega_menu_display}" style="opacity: 1; z-index: 3;">
 
   <h4 class="heading">Products</h4>
 
   <div class="mega-menu-info">
-    <div class="catergories col-4">
+    <div class="catergories col-4" [@slideDown]="isOpen ? 'open' : 'closed' " >
 
       <div class="item" *ngFor="let cat of catergories | keyvalue" (mouseover)="subs(cat.value)">
         <div>
@@ -69,7 +73,7 @@
 
     </div>
 
-    <div class="subcatergories col-4">
+    <div class="subcatergories col-4" [@slideDown]="isOpen ? 'open' : 'closed' ">
       <div class="item" *ngFor="let sub of subcatergories | keyvalue" (mouseover)="prods(sub.value)" (click)="getProducts(sub.key)">
         <div>
           {{ sub.key }}
@@ -80,12 +84,12 @@
       </div>
     </div>
 
-    <div class="products col-4">
-      <ul>
-        <li style="list-style:none;" *ngFor="let product of products" (click)="getProducts(product)">
+    <div class="products col-4" [@slideDown]="isOpen ? 'open' : 'closed' ">
+      <div class="item" style="list-style:none;" *ngFor="let product of products" (click)="getProducts(product)">
+        <div>
           {{product}}
-        </li>
-      </ul>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -96,9 +100,13 @@
   <div class="top">
 
     <div class="left col-3" style="display: flex; justify-content: center; flex-direction: column;" (click)="show_popup('menu')">
-      <div class="icon" style="margin-top: 25px;">
+      <div class="icon">
         <div class="burger" >
-          <div class="burger-menu"></div>
+          <div class="burger-menu" [@cross]="isMobileOpen ? 'crossed' : 'straight' ">
+            <div id="top-line" [ngStyle]="{transform : top_line_style}"></div>
+            <div id="center-line" [ngStyle]="{opacity : center_line_style}"></div>
+            <div id="bottom-line" [ngStyle]="{transform : bottom_line_style}"></div>
+          </div>
         </div>
       </div>
       <div class="title">MENU</div>
@@ -113,13 +121,13 @@
     </div>
 
     <div class="right col-3"  (click)="show_popup('cart')">
-      <div class="icon"> <img src="../../../../assets/images/cart.png" height="20px"> </div>
-      <div class="title">CART</div>
+      <div class="icon"> <a routerLink="/cart"> <img src="../../../../assets/images/cart.png" height="20px"> </a></div>
+      <div class="title"> <a routerLink="/cart" style="color: white; text-decoration: none;">CART</a></div>
     </div>
 
   </div>
 
-  <div class="bottom">
+  <div class="bottom" style="z-index: 2;">
 
     <div class="left col-4">
       <div class="icon"> <img src="../../../../assets/images/account.png" height="25px"> </div>
@@ -127,7 +135,7 @@
     </div>
 
     <div class="center col-4"  (click)="show_popup('products')">
-      <div class="icon"> <img src="../../../../assets/images/icons8-sort-down-50.png" height="25px" style="transform: rotate(180deg);"> </div>
+      <div class="icon" [@rotate]="isOpen ? 'open' : 'closed' "> <img src="../../../../assets/images/icons8-sort-down-50.png" height="25px" style="transform: rotate(180deg);"> </div>
       <div class="title">PRODUCTS</div>
     </div>
 
@@ -140,10 +148,11 @@
 
 </div>
 
-<div class="menu-popup" [ngStyle]="{display : menu_display}">
-  <ul>
+<div [@cross]="isMobileOpen ? 'crossed' : 'straight'" class="menu-popup" [ngStyle]="{display : menu_display}" style="z-index: 3;">
+  <ul class="menu-items">
     <li (click)="getProducts('all')">SHOP ALL PRODUCTS</li>
-    <li>CHECKOUT</li>
+    <li> <a routerLink="/cart" style="color: white; text-decoration: none; ">CHECKOUT</a> </li>
+    <li> <a href="https://wa.me/+27682582801" style="color: white; text-decoration: none;">INSTALLATIONS</a> </li>
   </ul>
   <hr style=" opacity: 0.5 !important; background-color: #13234E; width: 70%; margin-right: auto; margin-left: auto;">
   <ul>
@@ -151,7 +160,7 @@
     <!-- <li>BLOGS</li> -->
   </ul>
   <hr style=" opacity: 0.5 !important; background-color: #13234E; width: 70%; margin-right: auto; margin-left: auto;">
-  <div>
+  <div class="menu-items">
     FOLLOW US
     <br>
     <div>
@@ -163,7 +172,7 @@
   </div>
 </div>
 
-<div class="products-popup" [ngStyle]="{display : products_display}">
+<div class="products-popup" [ngStyle]="{display : products_display}" style="z-index: 3;">
 
   <div class="mobile-catergories" [ngStyle]="{display : mobile_cart_display}">
     <span style="letter-spacing: 9px;">CATERGORIES</span>
@@ -195,9 +204,9 @@
 
 </div>
 
-<div class="search-popup" [ngStyle]="{display : search_display}">
+<div  class="search-popup" style="z-index: 2;" [ngStyle]="{display : search_display}">
     <form [formGroup]="searchForm" (ngSubmit)="search()">
       <input formControlName="term" type="text" placeholder="SEARCH PRODUCTS">
-      <button type="submit"><img src="../../../../assets/images/search.png" height="25px"></button>
+      <button type="submit"><img src="../../../../assets/images/white-search.png" height="25px"></button>
     </form>
 </div>

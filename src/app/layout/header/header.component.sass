@@ -125,7 +125,6 @@
 #mobile-menu
   display: none
   color: white
-
   margin: 0
   left: 0
   text-align: center
@@ -151,25 +150,15 @@
     position: fixed
 
   .burger
-    .burger-menu::before
-        content: ''
-        display: block
-        width: 20px
-        height: 2px
-        box-shadow: 0px -13px 0 0 white
-
-    .burger-menu
+    display: flex
+    justify-content: center
+    .burger-menu div
+        background-color: white
+        opacity: 1
         height: 2px
         width: 20px
-        margin: auto
-        box-shadow: 0px -7px 0 0 white
-
-    .burger-menu::after
-        content: ''
-        display: block
-        width: 20px
-        height: 2px
-        box-shadow: 0px -3px 0 0 white
+        margin: 0
+        margin-bottom: 5px
 
   .burger:hover
     opacity: 0.7

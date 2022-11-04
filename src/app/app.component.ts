@@ -43,6 +43,25 @@ export class AppComponent implements OnInit{
       if (!cart){
         localStorage.setItem('cart', this.cartlist)
       }
-  }
 
-}
+      let cc = window as any;
+      cc.cookieconsent.initialise({
+        palette: {
+          popup: {
+            background: "#164969"
+          },
+          button: {
+            background: "#ffe000",
+            text: "#164969"
+          }
+        },
+        theme: "classic",
+        content: {
+          //message: this.cookieMessage,
+          //dismiss: this.cookieDismiss,
+          //link: this.cookieLinkText,
+          //href: environment.Frontend + "/dataprivacy"
+        }
+      });
+    }
+  }

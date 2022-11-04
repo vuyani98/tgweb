@@ -4,6 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {CloudinaryModule} from '@cloudinary/ng';
+import { GoogleMapsModule } from '@angular/google-maps';
+
 import { AppComponent } from './app.component';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { FooterComponent } from './layout/footer/footer.component';
@@ -33,6 +35,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
     BrowserAnimationsModule,
     IvyCarouselModule,
     NgxSpinnerModule,
+    GoogleMapsModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [CloudinaryModule],

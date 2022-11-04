@@ -28,13 +28,13 @@ export class AlarmComponent implements OnInit {
 
       for (let i=0; i<data.data.length; i++){
         let raw_products = data.data[i].attributes.products.data;
+
         for (let j=0; j<raw_products.length; j++){
-          this.products[j] = raw_products[j].attributes
-          this.products[j]['id'] = raw_products[j].id
+          this.products.push(raw_products[j])
+          this.products[this.products.length-1].id = raw_products[j]['id']
         }
       }
 
-      console.log(this.products)
     });
   }
 
@@ -58,12 +58,12 @@ export class AlarmComponent implements OnInit {
     for (let i=0; i<this.products.length; i++){
 
       if(id==this.products[i].id){
-        console.log(`${this.products[i]['product_code']}`)
-        this.one_product['image_url'] = this.products[i]['image_url'];
-        this.one_product['description'] = this.products[i]['description'];
-        this.one_product['product_code'] = this.products[i]['product_code'];
-        this.one_product['supplier_code'] = this.products[i]['supplier_code'];
-        this.one_product['price'] = this.products[i]['retail_price'];
+
+        this.one_product['image_url'] = this.products[i]['attributes']['image_url'];
+        this.one_product['description'] = this.products[i]['attributes']['description'];
+        this.one_product['product_code'] = this.products[i]['attributes']['product_code'];
+        this.one_product['supplier_code'] = this.products[i]['attributes']['supplier_code'];
+        this.one_product['price'] = this.products[i]['attributes']['retail_price'];
 
         this.one_product_display = 'flex'
 

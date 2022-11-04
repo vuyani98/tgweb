@@ -1,3 +1,51 @@
+<div class="form" [ngStyle]="{display : isFormDisplayed}">
+  <span (click)="close()" style="float: right; font-weight: bolder;">X</span>
+  <h4 [ngStyle]="{display : isFormDisplayed + ' !important'}">{{ formHeader }} enquiry</h4>
+
+  <form *ngIf="formDisplayed == 'general'" id="generalForm" [formGroup]="generalEnqForm" (ngSubmit)="generalEnq()">
+    <div class="input-container">
+      <p>Email Address</p>
+      <input id="email" type="text" formControlName="email" >
+    </div>
+
+    <div class="input-container">
+      <p>Name</p>
+      <input id="name" type="text" formControlName="name" >
+    </div>
+
+    <div class="input-container">
+      <p>Enquiry</p>
+      <textarea name="message"cols="30" rows="10" formControlName="message"></textarea>
+    </div>
+
+    <div class="input-btn">
+      <button type="submit">SEND</button>
+    </div>
+  </form>
+
+  <form *ngIf="formDisplayed == 'product'" id="productForm" [formGroup]="productEnqForm" (ngSubmit)="productEnq()">
+    <div class="input-container">
+      <p>Email Address</p>
+      <input id="email" type="text" formControlName="email" >
+    </div>
+
+    <div class="input-container">
+      <p>Name</p>
+      <input id="name" type="text" formControlName="name" >
+    </div>
+
+    <div class="input-container">
+      <p>Enquiry</p>
+      <textarea name="message"cols="30" rows="10" formControlName="message"></textarea>
+    </div>
+
+    <div class="input-btn">
+      <button type="submit">SEND</button>
+    </div>
+  </form>
+
+</div>
+
 <div class="footer">
 
   <div class="container">
@@ -7,10 +55,9 @@
         <h5 class="heading">Contact Us</h5>
         <div class="links">
           <ul>
-            <li>General Enquiries</li>
-            <li>Product Enquires</li>
-            <li>Emegency Contact</li>
-            <li>Installations</li>
+            <li (click)="enquires('general')">General Enquiries</li>
+            <li (click)="enquires('product')">Product Enquires</li>
+            <li> <a href="https://wa.me/+27682582801" style="color: white; text-decoration: none;"> Installations </a></li>
           </ul>
         </div>
       </div>
@@ -19,9 +66,8 @@
         <h5 class="heading">Accounts</h5>
         <div class="links">
           <ul>
-            <li>Login</li>
-            <li>Sign Up</li>
-            <li>Track Orders</li>
+            <li> <a routerLink="auth/login" style="color: white; text-decoration: none;">  Login </a></li>
+            <li> <a routerLink="auth/signup" style="color: white; text-decoration: none;"> Sign Up </a></li>
           </ul>
         </div>
       </div>
@@ -30,10 +76,7 @@
         <h5 class="heading">Terms & Policies</h5>
         <div class="links">
           <ul>
-            <li>Terms & Conditions</li>
-            <li>Return Policy</li>
-            <li>Product Warranty</li>
-            <li>Cookie Policy</li>
+            <li> <a routerLink="policies" style="color: white; text-decoration: none;"> Goods Exchange & Return Policies </a></li>
           </ul>
         </div>
       </div>

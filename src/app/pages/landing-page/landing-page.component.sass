@@ -35,6 +35,7 @@
             margin-right: 25px
             margin-top: 25px
             font-weight: 600
+            box-shadow: -1px 4px 15px 2px #0000006e
 
     .slide1
       background: linear-gradient(45deg, #040e282c,  #071b5486), url('../../../assets/images/SLIDE-1.png')
@@ -116,7 +117,7 @@
 
 #vid-modal
   position: fixed
-  bottom: 0
+  bottom: 60px
   background: #0000007c
   width: fit-content
   height: fit-content
@@ -165,14 +166,27 @@
       .checkout
         background: linear-gradient(45deg, #d8562e, #f00f0f)
 
-
 @media (max-width: 744px)
   .one-product
     margin: 10px
     flex-wrap: wrap
+
+    .product-info
+      h5
+        margin-top: 20px !important
+
+      .buttons
+        button
+          margin-top: 20px !important
 
   .hero-header
     font-size: 28px !important
 
   .hero-button
     font-size: 14px
+
+  .slide2
+    .right
+      img
+        margin-left: 70px
+        height: 320px !important
