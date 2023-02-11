@@ -24,6 +24,7 @@ import {IvyCarouselModule} from 'angular-responsive-carousel';
 import { PoliciesComponent } from './policies/policies.component';
 
 
+
 @NgModule({
   declarations: [
     LandingPageComponent,

@@ -12,7 +12,6 @@
         <div class="product-details">
           <div class="product-code">{{product.product_code}}</div>
           <p>{{product.supplier_code}}</p>
-          <div class="product-price">{{product.retail_price}}</div>
           <div class="buy-now">BUY NOW</div>
         </div>
       </div>
@@ -38,7 +37,6 @@
       <p>{{one_product.description}}</p>
     </div>
     <div>
-      <h5 style="margin-top:50px">{{one_product.price}}</h5>
       <div class="buttons">
         <button (click)="addtocart(one_product)" class="add-to-cart">Add to cart</button>
         <button (click)="checkout()" class="checkout">Checkout</button>

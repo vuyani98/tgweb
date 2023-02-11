@@ -1,3 +1,4 @@
+import { NgOptimizedImage } from '@angular/common'
 import { Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { PagesService } from '../pages.service';
