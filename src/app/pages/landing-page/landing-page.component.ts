@@ -1,3 +1,4 @@
+import { NgOptimizedImage } from '@angular/common'
 import { Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { PagesService } from '../pages.service';
@@ -6,6 +7,7 @@ import { NgxSpinnerService } from "ngx-spinner";
 import { CarouselComponent } from 'angular-responsive-carousel';
 import { trigger, state, style, animate, transition, keyframes, query } from '@angular/animations';
 import { HttpClient } from '@angular/common/http';
+//import { Observable, of } from 'rxjs';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { GoogleMap } from '@angular/google-maps';
