@@ -6,7 +6,7 @@
     <div [@Slide]="slide1 ? 'shown' : 'hidden'"  class="slide slide1" >
       <div class="content">
         <div class="sub-heading">
-          <img ngSrc="../../../assets/images/hiklogo.png" alt="" width="50%" height="auto" style="max-width: 200px; margin-bottom:20px">
+          <img src="../../../assets/images/hiklogo.png" alt="" width="50%" height="auto" style="max-width: 200px; margin-bottom:20px" priority>
         </div>
         <div class="hero-header">
           Providing world <br> class security <br> systems
@@ -25,7 +25,7 @@
         <div class="left col-9 col-sm-9 col-md-7 col-lg-7" style="height:100%; padding-top: 25px; font-family: 'Montserrat'; background: linear-gradient(90deg, #071b544d, #040e28),url('../../../assets/images/street.jpg'); background-size: cover; display: flex; justify-content: flex-start;">
           <div  class="content" style="margin-left: 15px !important">
             <div class="sub-heading">
-              <img ngSrc="../../../assets/images/hiklogo.png" alt="" width="50%" height="auto" style="max-width: 200px; margin-bottom:20px">
+              <img src="../../../assets/images/hiklogo.png" alt="" width="50%" height="auto" style="max-width: 200px; margin-bottom:20px">
             </div>
             <div class="hero-header" style="font-size: 50px; font-weight:bold">
               Tailor-made solutions<br> for desired<br> security
@@ -48,7 +48,7 @@
     <div [@Slide]="slide3 ? 'shown' : 'hidden'"  class="slide slide3" style="background:linear-gradient(90deg, #040e28, #071b54a6),url('../../../assets/images/showroom.jpg'); background-position: center;">
       <div class="content">
         <div class="sub-heading">
-          <img ngSrc="../../../assets/images/hiklogo.png" alt="" width="50%" height="auto" style="max-width: 200px; margin-bottom:20px">
+          <img src="../../../assets/images/hiklogo.png" alt="" width="50%" height="auto" style="max-width: 200px; margin-bottom:20px">
         </div>
         <div class="hero-header">
           Visit our showroom <br> and see how everything <br> works
@@ -95,7 +95,7 @@
           setting boundaries, people counting, differentiating between
            pets and kids e.t.c
         </p>
-        <button style="background-color: #c7be0f;"  (click)="showVid('acusense')">watch video <img ngSrc="../../../assets/images/play.png" height="20px" style="margin-left:10px"> </button>
+        <button style="background-color: #c7be0f;"  (click)="showVid('acusense')">watch video <img src="../../../assets/images/play.png" height="20px" style="margin-left:10px"> </button>
       </div>
     </div>
 
@@ -104,19 +104,19 @@
       <div class="products">
 
         <div class="product col-xs-12 col-12 col-md-4 col-lg-3">
-          <img ngSrc="../../../assets/images/network.png" alt="" height="150px" >
+          <img src="../../../assets/images/network.png" alt="" height="150px" >
           <h6>Network Cameras</h6>
           <button (click)="getProducts('Network')">shop</button>
         </div>
 
         <div class="product col-xs-12 col-12 col-md-4 col-lg-3">
-          <img ngSrc="../../../assets/images/ptz.png" alt="" height="150px" >
+          <img src="../../../assets/images/ptz.png" alt="" height="150px" >
           <h6>PTZ Cameras</h6>
           <button (click)="getProducts('PTZ')">shop</button>
         </div>
 
         <div class="product col-xs-12 col-12 col-md-4 col-lg-3">
-          <img ngSrc="../../../assets/images/nvr.png" alt="" height="150px" >
+          <img src="../../../assets/images/nvr.png" alt="" height="150px" >
           <h6>Network Video Recorder</h6>
           <button (click)="getProducts('NVR')">shop</button>
         </div>
@@ -139,7 +139,7 @@
           It is useful in any situation where color of footage is
           important especially when its dark or theres poor lighting.
         </p>
-        <button style="background-color: #252E37;"  (click)="showVid('colorvu')">watch video <img ngSrc="../../../assets/images/play.png" height="20px" style="margin-left:10px"></button>
+        <button style="background-color: #252E37;"  (click)="showVid('colorvu')">watch video <img src="../../../assets/images/play.png" height="20px" style="margin-left:10px"></button>
       </div>
     </div>
 
@@ -170,7 +170,7 @@
           alarm and allows the user to arm and disarm the alarm
           remotely using a mobile device.
         </p>
-        <button style="background-color: #252E37;" (click)="showVid('axpro')">watch video <img ngSrc="../../../assets/images/play.png" height="20px" style="margin-left:10px"></button>
+        <button style="background-color: #252E37;" (click)="showVid('axpro')">watch video <img src="../../../assets/images/play.png" height="20px" style="margin-left:10px"></button>
       </div>
       <div class="col-12 col-md-6 col-lg-6" style="display: flex; justify-content:end;">
       </div>
@@ -182,19 +182,19 @@
       <div class="products">
 
         <div class="product col-xs-12 col-12 col-md-4 col-lg-3">
-          <img ngSrc="../../../assets/images/panel.png" alt="" height="120px" width="auto">
+          <img src="../../../assets/images/panel.png" alt="" height="120px" width="auto">
           <h6>Panels</h6>
           <button (click)="getProducts('Panels')">view products</button>
         </div>
 
         <div class="product col-xs-12 col-12 col-md-4 col-lg-3">
-          <img ngSrc="../../../assets/images/detector.png" alt="" height="120px"width="auto">
+          <img src="../../../assets/images/detector.png" alt="" height="120px"width="auto">
           <h6>Detectors</h6>
           <button (click)="getProducts('Detectors')">view products</button>
         </div>
 
         <div class="product col-xs-12 col-12 col-md-4 col-lg-3">
-          <img ngSrc="../../../assets/images/kit.png" alt="" height="120px"  width="auto">
+          <img src="../../../assets/images/kit.png" alt="" height="120px"  width="auto">
           <h6>Kits</h6>
           <button (click)="getProducts('Kits')">view products</button>
         </div>
