@@ -71,7 +71,7 @@
       <div class="carousel-cell products" *ngFor="let product of products">
         <div class="product">
           <div style="height: 150px;">
-            <img ngSrc="{{product.image_url}}" alt="" width=150px  height=100px style="margin-bottom:10px;">
+            <img src="{{product.image_url}}" alt="" width=150px  height=100px style="margin-bottom:10px;">
           </div>
 
           <h6 style="font-size: smaller;">{{product.product_code}}</h6>
@@ -148,7 +148,7 @@
       <div class="products">
 
         <div class="product col-xs-12 col-12 col-md-4 col-lg-3" *ngFor="let product of colorProducts">
-          <img ngSrc="{{product.image_url}}" alt="" width=auto  height=100px style="margin-bottom:10px;">
+          <img src="{{product.image_url}}" alt="" width=auto  height=100px style="margin-bottom:10px;">
           <h6 style="font-size: smaller;">{{product.product_code}}</h6>
           <button (click)="show_one(product.id)">add to cart</button>
         </div>
@@ -214,7 +214,7 @@
 <div class="one-product" [ngStyle]="{display : one_product_display}">
 
   <div class="col-12 col-sm-12 col-md-6 col-lg-6 image" >
-    <img ngSrc="{{one_product.image_url}}" alt="" width="90% ">
+    <img src="{{one_product.image_url}}" alt="" width="90% ">
   </div>
 
   <div class="product-info">

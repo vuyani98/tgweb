@@ -7,6 +7,7 @@ import { NgxSpinnerService } from "ngx-spinner";
 import { CarouselComponent } from 'angular-responsive-carousel';
 import { trigger, state, style, animate, transition, keyframes, query } from '@angular/animations';
 import { HttpClient } from '@angular/common/http';
+//import { Observable, of } from 'rxjs';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { GoogleMap } from '@angular/google-maps';
