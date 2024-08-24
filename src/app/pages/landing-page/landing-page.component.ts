@@ -71,8 +71,8 @@ export class LandingPageComponent implements OnInit {
   slide3 = false;
   displayVid = 'None';
   vidLink:any;
-  lat = '-26.137823581467845';
-  long = '28.25777963406091'
+  lat = '-26.179781465548654';
+  long = '28.289071011475993'
   colorvu = 'https://www.youtube.com/embed/sn_DFZJCc7U';
   acusense = 'https://www.youtube.com/embed/7nbch_TQEA0';
   axpro = 'https://www.youtube.com/embed/OeGQDqtzrz8';
@@ -88,7 +88,7 @@ export class LandingPageComponent implements OnInit {
   one_product_display: string = 'none';
   apiLoaded: Observable<boolean>;
   options: google.maps.MapOptions = {
-    center: {lat: -26.137823581467845, lng: 28.25777963406091},
+    center: {lat: -26.179781465548654, lng: 28.289071011475993},
     zoom: 4
   };
 

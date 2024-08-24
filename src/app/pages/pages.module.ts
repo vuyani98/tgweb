@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { PagesRoutingModule } from './pages-routing.module';
 import { GoogleMapsModule } from '@angular/google-maps';
@@ -46,6 +47,7 @@ import { PoliciesComponent } from './policies/policies.component';
 
   ],
   imports: [
+    FormsModule,
     CommonModule,
     PagesRoutingModule,
     IvyCarouselModule,

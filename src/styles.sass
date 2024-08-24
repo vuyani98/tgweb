@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap'
+@import 'node_modules/bootstrap/scss/bootstrap'
 
 body
   font-family: "Montserrat"
@@ -101,3 +101,12 @@ h1,h2, h3, h4, h5, h6
 
     .image
       max-height: 40%
+
+
+.pop-prods
+  animation: scroll 160s linear infinite
+
+@keyframes scroll
+  to
+    transform: translateX(-50%)
+
