@@ -86,19 +86,14 @@ export class LandingPageComponent implements OnInit {
   };
   products: any[] = [];
   one_product_display: string = 'none';
-  apiLoaded: Observable<boolean>;
+ // apiLoaded: Observable<boolean>;
   options: google.maps.MapOptions = {
     center: {lat: -26.179781465548654, lng: 28.289071011475993},
     zoom: 4
   };
 
-  constructor(private httpClient : HttpClient ,private service: PagesService, private router: Router, private sanitizer: DomSanitizer, private spinner: NgxSpinnerService) {
-    console.log('calling api')
-    this.apiLoaded = this.httpClient.jsonp('https://maps.googleapis.com/maps/api/js?key=AIzaSyAyVnWI_YYyNKOgU9Wt2_WCW6GoJjNqfT0', 'callback')
-    .pipe(
-      map(() => true),
-      catchError(() => of(false)),
-    );
+  constructor(private service: PagesService, private router: Router, private sanitizer: DomSanitizer, private spinner: NgxSpinnerService) {
+
   }
 
   ngOnInit(): void {

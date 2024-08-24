@@ -12,7 +12,7 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { LazyimgDirective } from './lazyimg.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {IvyCarouselModule} from 'angular-responsive-carousel';
+//import {IvyCarouselModule} from 'angular-responsive-carousel';
 import { CartComponent } from './layout/cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 
@@ -33,7 +33,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
     ReactiveFormsModule,
     CloudinaryModule,
     BrowserAnimationsModule,
-    IvyCarouselModule,
+   // IvyCarouselModule,
     NgxSpinnerModule,
     GoogleMapsModule
   ],

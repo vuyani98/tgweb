@@ -50,7 +50,7 @@ import { PoliciesComponent } from './policies/policies.component';
     FormsModule,
     CommonModule,
     PagesRoutingModule,
-    IvyCarouselModule,
+    //IvyCarouselModule,
     NgxSpinnerModule,
     GoogleMapsModule
   ]
