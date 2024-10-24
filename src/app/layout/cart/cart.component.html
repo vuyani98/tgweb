@@ -8,6 +8,10 @@
       </div>
       <div class="right">
         <h6>{{product.product_code}}</h6>
+<<<<<<< HEAD
+=======
+        <!--<p style="color: green;">{{product.price}}</p>-->
+>>>>>>> b77f96084e77f082fd8ba1a6487218f71152466c
       </div>
       <div class="right">
         <button (click)="removeFromCart(i)">Remove From Cart <img src="../../../assets/images/trash.png" alt="" height="16px"></button>
@@ -15,18 +19,24 @@
     </div>
   </div>
   <div style="display: flex; justify-content: center; background: #f1f1f1; padding: 10px;">
+<<<<<<< HEAD
    <!-- <div style="font-weight: bolder; font-size:larger">
       Total : R {{total}} <span style="font-weight: lighter; font-style:italic; font-size:medium">(VAT Incl.)</span>
     </div>
   -->
     <div>
       <button id="checkout-button" class="checkout"  (click)="enquires('product')">Enquire Products</button>
+=======
+      <!--<div style="font-weight: bolder; font-size:larger">
+      Total : R {{total}} <span style="font-weight: lighter; font-style:italic; font-size:medium">(VAT Incl.)</span>
+    </div>-->
+    <div>
+      <button id="checkout-button" class="checkout"  (click)="enquires('product')">Checkout</button>
+>>>>>>> b77f96084e77f082fd8ba1a6487218f71152466c
     </div>
   </div>
-  <div>
-
-  </div>
 </div>
+<<<<<<< HEAD
 
 <div class="form" [ngStyle]="{display : isFormDisplayed}">
   <span (click)="close()" style="float: right; font-weight: bolder;">X</span>
@@ -53,3 +63,30 @@
     </div>
   </form>
 </div>
+=======
+  <div class="form" [ngStyle]="{display : isFormDisplayed}">
+    <span (click)="close()" style="float: right; font-weight: bolder;">X</span>
+    <h4 [ngStyle]="{display : isFormDisplayed + ' !important'}">{{ formHeader }} enquiry</h4>
+
+    <form *ngIf="formDisplayed == 'product'" id="productForm" [formGroup]="productEnqForm" (ngSubmit)="productEnq()">
+      <div class="input-container">
+        <p>Email Address</p>
+        <input id="email" type="text" formControlName="email" >
+      </div>
+
+      <div class="input-container">
+        <p>Name</p>
+        <input id="name" type="text" formControlName="name" >
+      </div>
+
+      <div class="input-container">
+        <p>Enquiry</p>
+        <textarea name="message"cols="30" rows="10" formControlName="message" [value]="products"></textarea>
+      </div>
+
+      <div class="input-btn">
+        <button type="submit">SEND</button>
+      </div>
+    </form>
+  </div>
+>>>>>>> b77f96084e77f082fd8ba1a6487218f71152466c

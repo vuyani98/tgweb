@@ -1,13 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* Importing Bootstrap SCSS file. */
+<<<<<<< HEAD
 //@import '~bootstrap/scss/bootstrap.scss'
 @import "../node_modules/bootstrap/scss/bootstrap.scss"
+=======
+@import 'node_modules/bootstrap/scss/bootstrap'
+>>>>>>> b77f96084e77f082fd8ba1a6487218f71152466c
 
 body
   font-family: "Montserrat"
   color: #13234E
-  overflow-x: hidden
+  overflow-x: clip !important
 
 button, .buy-now
   border-radius: 27px !important
@@ -102,3 +106,12 @@ h1,h2, h3, h4, h5, h6
 
     .image
       max-height: 40%
+
+
+.pop-prods
+  animation: scroll 160s linear infinite
+
+@keyframes scroll
+  to
+    transform: translateX(-50%)
+

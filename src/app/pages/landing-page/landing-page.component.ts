@@ -73,8 +73,13 @@ export class LandingPageComponent implements OnInit {
   slide3 = false;
   displayVid = 'None';
   vidLink:any;
+<<<<<<< HEAD
   lat = '-26.179834564274984';
   long = '28.289021225995196'
+=======
+  lat = '-26.179781465548654';
+  long = '28.289071011475993'
+>>>>>>> b77f96084e77f082fd8ba1a6487218f71152466c
   colorvu = 'https://www.youtube.com/embed/sn_DFZJCc7U';
   acusense = 'https://www.youtube.com/embed/7nbch_TQEA0';
   axpro = 'https://www.youtube.com/embed/OeGQDqtzrz8';
@@ -88,19 +93,18 @@ export class LandingPageComponent implements OnInit {
   };
   products: any[] = [];
   one_product_display: string = 'none';
-  apiLoaded: Observable<boolean>;
+ // apiLoaded: Observable<boolean>;
   options: google.maps.MapOptions = {
+<<<<<<< HEAD
     center: {lat: -26.179834564274984, lng: 28.289021225995196},
+=======
+    center: {lat: -26.179781465548654, lng: 28.289071011475993},
+>>>>>>> b77f96084e77f082fd8ba1a6487218f71152466c
     zoom: 4
   };
 
-  constructor(private httpClient : HttpClient ,private service: PagesService, private router: Router, private sanitizer: DomSanitizer, private spinner: NgxSpinnerService) {
-    console.log('calling api')
-    this.apiLoaded = this.httpClient.jsonp('https://maps.googleapis.com/maps/api/js?key=AIzaSyAyVnWI_YYyNKOgU9Wt2_WCW6GoJjNqfT0', 'callback')
-    .pipe(
-      map(() => true),
-      catchError(() => of(false)),
-    );
+  constructor(private service: PagesService, private router: Router, private sanitizer: DomSanitizer, private spinner: NgxSpinnerService) {
+
   }
 
   ngOnInit(): void {
@@ -246,7 +250,7 @@ export class LandingPageComponent implements OnInit {
 
   //function
   directions(){
-    document.getElementById('googleMap')?.scrollIntoView();
+    document.getElementById('googleMap')?.scrollIntoView({behavior: 'smooth'});
   }
 
 }

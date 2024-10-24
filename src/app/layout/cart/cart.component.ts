@@ -1,8 +1,13 @@
 import { Component, OnInit, Renderer2, ElementRef } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { Route, Router } from '@angular/router';
+<<<<<<< HEAD
 import { FormBuilder, NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
+=======
+import { HttpClient } from '@angular/common/http';
+>>>>>>> b77f96084e77f082fd8ba1a6487218f71152466c
 
 @Component({
   selector: 'app-cart',
@@ -14,6 +19,10 @@ export class CartComponent implements OnInit {
   cartObjects:any = {};
   products: any  = []
   total: number = 0;
+<<<<<<< HEAD
+=======
+  products: any  = []
+>>>>>>> b77f96084e77f082fd8ba1a6487218f71152466c
   isFormDisplayed = 'none';
   formHeader: string = '';
   formDisplayed = '';
@@ -24,8 +33,12 @@ export class CartComponent implements OnInit {
     enquiry: 'Product Enquiry',
     message: '',
   })
+<<<<<<< HEAD
 
   constructor(private formBuilder : FormBuilder, private http : HttpClient, private route: Router, private renderer: Renderer2, private element: ElementRef) { }
+=======
+  constructor(private route: Router, private renderer: Renderer2, private element: ElementRef, private formBuilder: FormBuilder, private http: HttpClient) { }
+>>>>>>> b77f96084e77f082fd8ba1a6487218f71152466c
 
   ngOnInit(): void {
 
@@ -122,4 +135,8 @@ export class CartComponent implements OnInit {
     this.productEnqForm.reset();
     this.isFormDisplayed = 'none';
   }
+<<<<<<< HEAD
+=======
+
+>>>>>>> b77f96084e77f082fd8ba1a6487218f71152466c
 }
