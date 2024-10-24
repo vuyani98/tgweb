@@ -1,5 +1,7 @@
 import { Component, OnInit, Renderer2, ElementRef } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { Route, Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-cart',
@@ -10,8 +12,18 @@ export class CartComponent implements OnInit {
 
   cartObjects:any;
   total: number = 0;
+  products: any  = []
+  isFormDisplayed = 'none';
+  formHeader: string = '';
+  formDisplayed = '';
 
-  constructor(private route: Router, private renderer: Renderer2, private element: ElementRef) { }
+  productEnqForm = this.formBuilder.group({
+    email: '',
+    name: '',
+    enquiry: 'Product Enquiry',
+    message: '',
+  })
+  constructor(private route: Router, private renderer: Renderer2, private element: ElementRef, private formBuilder: FormBuilder, private http: HttpClient) { }
 
   ngOnInit(): void {
 
@@ -78,6 +90,35 @@ export class CartComponent implements OnInit {
     localStorage.setItem('items', items.toString())
     localStorage.setItem('total', this.total.toString())
     this.route.navigateByUrl('/checkout')
+  }
+
+  productEnq(){
+    this.http.post('https://formspree.io/f/mpznoeqy',
+        { name: this.productEnqForm.get('name')?.value , replyto: this.productEnqForm.get('email')?.value, message: this.productEnqForm.get('message')?.value })
+        .subscribe(
+          response => {
+            alert('Query Sent');
+          }
+    );
+    this.productEnqForm.reset();
+    this.isFormDisplayed = 'none';
+  }
+
+  enquires(name:string){
+    this.formHeader = name;
+    this.formDisplayed = name;
+    this.isFormDisplayed = 'block';
+
+    let prody = []
+
+    for (let i = 0; i < this.cartObjects.length; i++){
+      prody[i] = this.cartObjects[i]['product_code'];
+    }
+    this.productEnqForm.patchValue({ message : `Enquire about  products :  ${prody}`})
+  }
+  close(){
+    this.productEnqForm.reset();
+    this.isFormDisplayed = 'none';
   }
 
 }

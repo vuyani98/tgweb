@@ -239,7 +239,7 @@ export class LandingPageComponent implements OnInit {
 
   //function
   directions(){
-    document.getElementById('googleMap')?.scrollIntoView();
+    document.getElementById('googleMap')?.scrollIntoView({behavior: 'smooth'});
   }
 
 }

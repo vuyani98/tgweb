@@ -111,5 +111,8 @@
       }
     }
   },
-  "defaultProject": "tgapp"
+  "defaultProject": "tgapp",
+  "cli": {
+    "analytics": false
+  }
 }

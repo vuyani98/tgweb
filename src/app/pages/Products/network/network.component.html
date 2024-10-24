@@ -53,8 +53,8 @@
         <div class="product-details">
           <div class="product-code">{{product.attributes.product_code}}</div>
           <p>{{product.attributes.supplier_code}}</p>
-          <div class="product-price">{{product.attributes.retail_price}}</div>
-          <div class="buy-now">BUY NOW</div>
+          <!-- <div class="product-price">{{product.attributes.retail_price}}</div>-->
+          <div class="buy-now">Enquire</div>
         </div>
       </div>
 
@@ -79,11 +79,12 @@
       <p>{{one_product.description}}</p>
     </div>
     <div>
-      <h5 style="margin-top:50px">{{one_product.price}}</h5>
+    <!--<h5 style="margin-top:50px">{{one_product.price}}</h5>-->
       <div class="buttons">
         <button (click)="addtocart(one_product)" class="add-to-cart">Add to cart</button>
         <button (click)="checkout()" class="checkout">Checkout</button>
       </div>
+      <span style="font-size: smaller; font-style: italic; color: green;">*To enquire add the products in question to cart then enquire in cart page once</span>
     </div>
   </div>
 

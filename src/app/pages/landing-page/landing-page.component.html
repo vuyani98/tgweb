@@ -102,7 +102,7 @@
             </div>
 
             <h6 style="font-size: smaller;">{{product.product_code}}</h6>
-              <h6 class="price" >{{product.retail_price}}</h6>
+
           </div>
         </div>
       </div>
@@ -114,7 +114,6 @@
             </div>
 
             <h6 style="font-size: smaller;">{{product.product_code}}</h6>
-              <h6 class="price" >{{product.retail_price}}</h6>
           </div>
         </div>
       </div>
@@ -191,8 +190,8 @@
         <div class="product col-xs-12 col-12 col-md-4 col-lg-3" *ngFor="let product of colorProducts">
           <img src="{{product.image_url}}" alt="" width=auto  height=100px style="margin-bottom:10px;">
           <h6 style="font-size: smaller;">{{product.product_code}}</h6>
-            <h6 class="price">{{product.retail_price}}</h6>
-          <button (click)="show_one(product.id)">add to cart</button>
+            <!--<h6 class="price">{{product.retail_price}}</h6> -->
+          <button (click)="show_one(product.id)">Enquire</button>
         </div>
 
       </div>
@@ -268,11 +267,12 @@
       <p>{{one_product.description}}</p>
     </div>
     <div>
-      <h5 style="margin-top:50px">{{one_product.price}}</h5>
+      <!--<h5 style="margin-top:50px">{{one_product.price}}</h5>-->
       <div class="buttons">
         <button class="add-to-cart" (click)="addtocart(one_product)">Add to cart</button>
         <button (click)="checkout()" class="checkout">Checkout</button>
       </div>
+      <span style="font-size: smaller; font-style: italic; color: green;">*To enquire add the products in question to cart then enquire in cart page once</span>
     </div>
   </div>
 
